@@ -145,7 +145,7 @@
     "subtitle": "Atacante equatoriano é apresentado no Clube do Remo.",
     "label": "Contratação",
     "date": "14/06/2026",
-    "img": null,
+    "img": "../../plata.png",
     "teams": ["remo"],
     "destaque": false
   }
