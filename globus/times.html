@@ -102,9 +102,8 @@
 
     newsGrid.innerHTML = '';
     noticias.forEach(n => {
-      const card = document.createElement('a');
+      const card = document.createElement('div');
       card.className = 'news-card';
-      card.href = n.file;
       card.innerHTML = `
         ${n.img
           ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;>FOTO</div>'">`

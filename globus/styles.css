@@ -246,10 +246,10 @@ body {
 /* News card grid */
 .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
 .news-card {
-  text-decoration: none; color: inherit; display: flex; flex-direction: column;
-  background: #fff; border-radius: 6px; overflow: hidden; transition: box-shadow .15s, transform .15s;
+  display: flex; flex-direction: column; cursor: default; color: inherit;
+  background: #fff; border-radius: 6px; overflow: hidden; transition: box-shadow .2s, transform .2s;
 }
-.news-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.12); transform: translateY(-2px); }
+.news-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.15); transform: scale(1.03); }
 .news-card__thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #ddd; }
 .news-card__thumb-placeholder {
   width: 100%; aspect-ratio: 16/9; background: #d0e8d4;

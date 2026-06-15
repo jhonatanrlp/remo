@@ -32,22 +32,14 @@
       const grid     = document.getElementById('news-grid');
       grid.innerHTML = '';
 
-      // Primeiro item = destaque (inter-financas vai ser o primeiro no JSON)
       const destaque = noticias[0];
       const resto    = noticias.slice(1);
-
-      // ── HERO ──
-      const side1 = resto[0];
-      const side2 = resto[1];
-
-      function imgOrBg(src, cls) {
-        if (!src) return `<div class="${cls}-color-bg"></div>`;
-        return `<img class="${cls}__img" src="${src}" alt="" onerror="this.outerHTML='<div class=&quot;${cls}-color-bg&quot;></div>'">`;
-      }
+      const side1    = resto[0];
+      const side2    = resto[1];
 
       heroArea.innerHTML = `
         <div class="hero-layout">
-          <a class="hero-card" href="${destaque.file}">
+          <div class="hero-card">
             ${destaque.img
               ? `<img class="hero-card__img" src="${destaque.img}" alt="" onerror="this.outerHTML='<div class=&quot;hero-card__color-bg&quot;></div>'">`
               : `<div class="hero-card__color-bg"></div>`}
@@ -55,35 +47,33 @@
               <span class="hero-card__badge">${destaque.label}</span>
               <p class="hero-card__title">${destaque.title}</p>
             </div>
-          </a>
+          </div>
           <div class="side-stack">
             ${side1 ? `
-            <a class="side-card" href="${side1.file}">
+            <div class="side-card">
               ${side1.img
                 ? `<img class="side-card__img" src="${side1.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
               <div class="side-card__overlay">
                 <p class="side-card__title">${side1.title}</p>
               </div>
-            </a>` : ''}
+            </div>` : ''}
             ${side2 ? `
-            <a class="side-card" href="${side2.file}">
+            <div class="side-card">
               ${side2.img
                 ? `<img class="side-card__img" src="${side2.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
               <div class="side-card__overlay">
                 <p class="side-card__title">${side2.title}</p>
               </div>
-            </a>` : ''}
+            </div>` : ''}
           </div>
         </div>
       `;
 
-      // ── GRID (skip side1 e side2, já exibidos) ──
       resto.slice(2).forEach(n => {
-        const card = document.createElement('a');
+        const card = document.createElement('div');
         card.className = 'news-card';
-        card.href = n.file;
         card.innerHTML = `
           ${n.img
             ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;>FOTO</div>'">`

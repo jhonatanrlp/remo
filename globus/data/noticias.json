@@ -6,7 +6,6 @@
     "label": "Crise Financeira",
     "date": "14/06/2026",
     "img": null,
-    "file": "artigos/inter-financas.html",
     "teams": ["inter"],
     "destaque": true
   },
@@ -17,7 +16,6 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pietro_quadros_no_inter.jpg",
-    "file": "artigos/inter-pietro.html",
     "teams": ["inter"],
     "destaque": false
   },
@@ -28,7 +26,6 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pp tecnico no flamengo.jpg",
-    "file": "artigos/flamengo-pp.html",
     "teams": ["flamengo"],
     "destaque": false
   },
@@ -39,7 +36,6 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/yzzy no vitoria.jpg",
-    "file": "artigos/vitoria-yzzy.html",
     "teams": ["vitoria"],
     "destaque": false
   },
@@ -50,7 +46,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/adeyeme no inter.jpg",
-    "file": "artigos/inter-adeyemi.html",
     "teams": ["inter"],
     "destaque": false
   },
@@ -61,7 +56,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/nico gonzalez no inter.jpg",
-    "file": "artigos/inter-nico-gonzalez.html",
     "teams": ["inter"],
     "destaque": false
   },
@@ -72,7 +66,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/joao_victor+palmeiras.jpg",
-    "file": "artigos/palmeiras-joao-victor.html",
     "teams": ["palmeiras"],
     "destaque": false
   },
@@ -83,7 +76,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/jack elliot (nao o harvey) no galo.jpg",
-    "file": "artigos/galo-jack-elliot.html",
     "teams": ["atletico-mg"],
     "destaque": false
   },
@@ -94,7 +86,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/coutinho_tecnico_no_vasco.jpg",
-    "file": "artigos/galo-coutinho.html",
     "teams": ["atletico-mg"],
     "destaque": false
   },
@@ -105,7 +96,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/diallo no coxa.jpg",
-    "file": "artigos/coritiba-diallo.html",
     "teams": ["coritiba"],
     "destaque": false
   },
@@ -116,7 +106,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/rafael_blackman_no_mirrasol.jpg",
-    "file": "artigos/mirassol-rafael.html",
     "teams": ["mirassol"],
     "destaque": false
   },
@@ -127,7 +116,6 @@
     "label": "Futebol",
     "date": "14/06/2026",
     "img": "fotos/jogador gabi gol no flu.jpg",
-    "file": "artigos/flu-gabi.html",
     "teams": ["fluminense"],
     "destaque": false
   },
@@ -138,7 +126,6 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/jhonatan ramos no remo.jpg",
-    "file": "../jhonatanrlp.html",
     "teams": ["remo"],
     "destaque": false
   },
@@ -149,7 +136,6 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": null,
-    "file": "../plata.html",
     "teams": ["remo"],
     "destaque": false
   }
