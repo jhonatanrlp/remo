@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Times — Globus Esportes</title>
+  <link rel="icon" href="../remo.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <main class="times-page">
+    <h1>Times &amp; Técnicos</h1>
+    <p class="times-page__sub">OSM · Liga — Temporada 2026</p>
+
+    <div class="times-filter">
+      <button class="filter-btn active" onclick="filterTimes('all', this)">Todos</button>
+      <button class="filter-btn" onclick="filterTimes('active', this)">Com técnico ✅</button>
+      <button class="filter-btn" onclick="filterTimes('empty', this)">Sem técnico</button>
+      <button class="filter-btn" onclick="filterTimes('banned', this)">Banido 🚫</button>
+    </div>
+
+    <div class="times-grid" id="times-grid">
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Atlético-MG</span>
+        <span class="team-card__manager">Coutinho</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card team-card--empty" data-status="empty">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Athletico-PR</span>
+        <span class="team-card__manager">—</span>
+        <span class="team-card__badge">Vaga aberta</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Bahia</span>
+        <span class="team-card__manager">Jurandir</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card team-card--banned" data-status="banned">
+        <span class="team-card__role">Status</span>
+        <span class="team-card__name">Botafogo</span>
+        <span class="team-card__manager">PROIBIDO 🚫</span>
+        <span class="team-card__badge">Banido</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Bragantino</span>
+        <span class="team-card__manager">Leonardo</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card team-card--empty" data-status="empty">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Chapecoense</span>
+        <span class="team-card__manager">—</span>
+        <span class="team-card__badge">Vaga aberta</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Corinthians</span>
+        <span class="team-card__manager">Sayro</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Coritiba</span>
+        <span class="team-card__manager">Zaquieu</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Cruzeiro</span>
+        <span class="team-card__manager">Lemos</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Flamengo</span>
+        <span class="team-card__manager">PP</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Fluminense</span>
+        <span class="team-card__manager">Pedro</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Grêmio</span>
+        <span class="team-card__manager">Felipe</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Internacional</span>
+        <span class="team-card__manager">Pietro Quadros</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Mirassol</span>
+        <span class="team-card__manager">Rafael</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Palmeiras</span>
+        <span class="team-card__manager">João Victor</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Remo</span>
+        <span class="team-card__manager">Jhonatanrlp</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Santos</span>
+        <span class="team-card__manager">Wanderson</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">São Paulo</span>
+        <span class="team-card__manager">Duarte</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Vasco</span>
+        <span class="team-card__manager">Kadu</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+      <div class="team-card" data-status="active">
+        <span class="team-card__role">Técnico</span>
+        <span class="team-card__name">Vitória</span>
+        <span class="team-card__manager">Yzzy</span>
+        <span class="team-card__badge">✅ Ativo</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-brand">Globus</span>
+    <p>© 2026 Globus Esportes</p>
+    <p>OSM · Liga</p>
+  </footer>
+
+  <script>
+    function filterTimes(status, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.team-card').forEach(card => {
+        card.style.display = (status === 'all' || card.dataset.status === status) ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
