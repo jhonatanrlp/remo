@@ -304,8 +304,7 @@
     const pass = document.getElementById('login-pass').value.trim().toLowerCase();
     if (!USERS[user]) { msg('login-msg','Login não encontrado.','error'); return; }
     if (pass !== user) { msg('login-msg','Senha incorreta.','error'); return; }
-    currentUser = USERS[user];
-    currentUser.login = user;
+    currentUser = { ...USERS[user], login: user };
     sessionStorage.setItem('globus_user', JSON.stringify(currentUser));
     showPost();
   }
@@ -326,12 +325,16 @@
   async function previewFoto(input) {
     const preview = document.getElementById('foto-preview');
     _cachedFile = null;
-    if (input.files && input.files[0]) {
+    preview.style.display = 'none';
+    if (!input.files || !input.files[0]) return;
+    try {
       const file = input.files[0];
-      _cachedFile = { b64: await fileToBase64(file), ext: file.name.split('.').pop().toLowerCase() };
-      const dataUrl = 'data:image/' + _cachedFile.ext + ';base64,' + _cachedFile.b64;
-      preview.src = dataUrl;
+      const b64  = await fileToBase64(file);
+      _cachedFile = { b64, ext: file.name.split('.').pop().toLowerCase() };
+      preview.src = 'data:image/' + _cachedFile.ext + ';base64,' + b64;
       preview.style.display = 'block';
+    } catch (e) {
+      msg('post-msg', '❌ Não foi possível ler a imagem: ' + e.message, 'error');
     }
   }
 
@@ -446,6 +449,7 @@
       setProgress(100, 'Publicado!');
       msg('post-msg', '✅ Notícia publicada! O site atualiza em ~1 minuto.', 'success');
 
+      _cachedFile = null;
       document.getElementById('p-title').value = '';
       document.getElementById('p-subtitle').value = '';
       document.getElementById('p-foto').value = '';
