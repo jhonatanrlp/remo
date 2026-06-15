@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clube do Remo</title>
+  <title>Bem-vindo Gonzalo Plata — Clube do Remo</title>
   <link rel="icon" href="remo.png" type="image/x-icon">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,7 +14,7 @@
       color: #0f2145;
     }
 
-    /* ── TOPBAR (estilo Real Madrid) ── */
+    /* ── TOPBAR ── */
     .topbar {
       background: #1a1a2e;
       height: 52px;
@@ -47,10 +46,6 @@
     .topbar-logos img {
       height: 30px;
       width: auto;
-      filter: brightness(0) invert(1);
-    }
-    .topbar-logos img.escudo-top {
-      filter: none;
     }
     .topbar-divider {
       width: 1px;
@@ -105,9 +100,8 @@
       border-radius: 4px;
       cursor: default;
     }
-    .topbar-btn svg { flex-shrink: 0; }
 
-    /* ── NAVBAR (linha secundária) ── */
+    /* ── NAVBAR ── */
     .navbar {
       height: 52px;
       border-bottom: 1px solid #e1e5ea;
@@ -116,10 +110,7 @@
       padding: 0 20px;
       gap: 12px;
     }
-    .navbar-logo {
-      height: 30px;
-      width: auto;
-    }
+    .navbar-logo { height: 30px; width: auto; }
     .navbar-name {
       font-size: 12px;
       font-weight: 700;
@@ -134,8 +125,6 @@
       margin: 0 auto;
       padding: 0 24px 64px;
     }
-
-    /* title */
     .article__title {
       font-size: clamp(26px, 4vw, 44px);
       font-weight: 700;
@@ -144,36 +133,40 @@
       color: #0f2145;
       margin: 32px 0 24px;
     }
-
-    /* hero image — full width */
     .article__figure {
       width: 100%;
-      margin: 0 0 0;
       line-height: 0;
     }
     .article__img {
-      width: 60%;
-      max-width: 340px;
+      width: 100%;
       height: auto;
       display: block;
-      object-fit: contain;
-      margin: 0 auto;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f3f5f8;
     }
-    /* placeholder quando a imagem não existe */
     .article__img-placeholder {
       width: 100%;
-      min-height: 260px;
-      background: #f3f5f8;
+      min-height: 360px;
+      background: linear-gradient(135deg, #003580 0%, #0055cc 100%);
+      border-radius: 10px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #acb4c1;
+      gap: 16px;
+    }
+    .article__img-placeholder img {
+      height: 120px;
+      width: auto;
+      opacity: .6;
+    }
+    .article__img-placeholder span {
+      color: rgba(255,255,255,.5);
       font-size: 12px;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
-
-    /* meta info */
     .article__meta {
       display: flex;
       align-items: center;
@@ -186,8 +179,6 @@
       color: #5e6a83;
     }
     .article__meta-dot { color: #c7ccd6; }
-
-    /* body text */
     .article__body p {
       font-size: 18px;
       line-height: 1.75;
@@ -195,23 +186,6 @@
       margin-bottom: 20px;
     }
     .article__body p:last-child { margin-bottom: 0; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid #e1e5ea;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    footer p {
-      font-size: 11px;
-      color: #5e6a83;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
 
     /* ── NOTÍCIAS RECENTES ── */
     .recent {
@@ -244,13 +218,6 @@
       transition: box-shadow .15s;
     }
     .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-    .news-card__img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      background: #f3f5f8;
-      display: block;
-    }
     .news-card__img-placeholder {
       width: 100%;
       aspect-ratio: 16/9;
@@ -291,6 +258,23 @@
       padding-top: 8px;
     }
 
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e1e5ea;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer p {
+      font-size: 11px;
+      color: #5e6a83;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 600px) {
       .article__title { margin: 24px 0 18px; }
       .article__body p { font-size: 16px; }
@@ -305,13 +289,10 @@
     <div class="topbar-hamburger">
       <span></span><span></span><span></span>
     </div>
-
     <div class="topbar-logos">
-      <img class="escudo-top" src="escudo.png" alt="Remo"
-           onerror="this.style.display='none'" />
+      <img src="escudo.png" alt="Remo" onerror="this.style.display='none'" />
       <div class="topbar-divider"></div>
     </div>
-
     <nav class="topbar-nav">
       <a>Elenco</a>
       <a>Estatísticas</a>
@@ -319,12 +300,11 @@
       <a>Transferências</a>
       <a>Comunicados</a>
     </nav>
-
     <div class="topbar-right">
       <span class="osm-badge">OSM · Liga</span>
       <div class="topbar-btn">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        Login
+        Jhonatanrlp
       </div>
     </div>
   </div>
@@ -339,37 +319,36 @@
   <!-- ARTICLE -->
   <article class="article">
 
-    <h1 class="article__title">Comunicado Oficial: Jhonatanrlp</h1>
+    <h1 class="article__title">Bem-vindo, Gonzalo Plata!</h1>
 
-    <!-- IMAGEM PRINCIPAL -->
-    <!-- Opção A: escudo grande (como o Real Madrid faz nos comunicados) -->
     <figure class="article__figure">
+      <!-- troque src para a foto real do Plata quando tiver -->
       <img class="article__img"
-           src="escudo.png"
-           alt="Comunicado Oficial — Clube do Remo"
-           onerror="this.outerHTML='<div class=\'article__img-placeholder\'>[coloque o escudo aqui]</div>'" />
+           src="plata.png"
+           alt="Gonzalo Plata — Clube do Remo"
+           onerror="this.outerHTML=`<div class='article__img-placeholder'><img src='escudo.png' onerror='this.style.display=\'none\'' /><span>foto do jogador em breve</span></div>`" />
     </figure>
 
-    <!-- META -->
     <div class="article__meta">
-      <span>Comunicado Oficial</span>
+      <span>Contratação</span>
       <span class="article__meta-dot">·</span>
       <time datetime="2026-06-14">14/06/2026</time>
     </div>
 
-    <!-- CORPO -->
     <div class="article__body">
       <p>
-        A Diretoria do Clube do Remo, reunida nesta sábado, 14 de junho,
-        decidiu nomear <strong>Jhonatanrlp</strong> como novo treinador da equipe
-        principal pelas próximas temporadas.
+        O Clube do Remo anuncia com grande satisfação a contratação do atacante equatoriano
+        <strong>Gonzalo Plata</strong>. O jogador assina com o Leão Azul e reforça o setor
+        ofensivo da equipe comandada pelo técnico Jhonatanrlp para a temporada.
       </p>
       <p>
-        Jhonatanrlp se apresenta ao clube comprometido com a intensidade,
-        o trabalho e o orgulho de defender as cores do Leão Azul do Pará.
+        Veloz, habilidoso e com passagens pela seleção do Equador, Plata chega ao clube
+        trazendo qualidade técnica e experiência internacional para o projeto do Remo no OSM.
+        Seu poder de desequilíbrio pelas laterais será um diferencial importante na nossa
+        estratégia de jogo.
       </p>
       <p>
-        Seja bem-vindo, professor.
+        Bem-vindo ao Leão Azul do Pará, Gonzalo. A Fiel aguarda grandes jogadas!
       </p>
     </div>
 
@@ -380,13 +359,13 @@
     <p class="recent__heading">Notícias Recentes</p>
     <div class="recent__grid">
 
-      <a class="news-card" href="plata.html">
+      <a class="news-card" href="index.html">
         <div class="news-card__img-placeholder">
           <img src="escudo.png" alt="" onerror="this.style.display='none'" />
         </div>
         <div class="news-card__body">
-          <span class="news-card__label">Contratação</span>
-          <span class="news-card__title">Bem-vindo Gonzalo Plata, o novo atacante do Leão</span>
+          <span class="news-card__label">Comunicado Oficial</span>
+          <span class="news-card__title">Jhonatanrlp é o novo treinador do Clube do Remo</span>
           <span class="news-card__date">14/06/2026</span>
         </div>
       </a>
@@ -397,7 +376,7 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2026 Clube do Remo</p>
-    <p>Comunicado Oficial</p>
+    <p>Contratação</p>
   </footer>
 
 </body>
