@@ -136,6 +136,7 @@ body {
   font-weight: 700;
   color: #1a4a22;
 }
+.login-btn:hover { background: #e6c400; }
 
 /* ── MATCH TICKER ── */
 .match-ticker {
