@@ -13,22 +13,71 @@
   <script src="header.js"></script>
 
   <main class="news-listing">
-    <div class="news-listing__header">
-      <h1 class="news-listing__title">Últimas Notícias</h1>
-      <span class="news-listing__count" id="news-count"></span>
+    <p class="section-label">Últimas Notícias</p>
+
+    <!-- ── HERO + LATERAL ─────────────────────────────────────────
+         hero-card  = matéria principal (imagem grande)
+         side-stack = 2 matérias menores ao lado
+    ──────────────────────────────────────────────────────────── -->
+    <div class="hero-layout">
+
+      <a class="hero-card" href="inter-financas.html">
+        <div class="hero-card__img-placeholder"></div>
+        <div class="hero-card__overlay">
+          <span class="hero-card__live">EXCLUSIVO</span>
+          <p class="hero-card__title">Internacional emite nota sobre crise<br>e anuncia troca do café por esperança</p>
+        </div>
+      </a>
+
+      <div class="side-stack">
+        <a class="side-card" href="../plata.html">
+          <div class="side-card__img-placeholder"></div>
+          <div class="side-card__overlay">
+            <p class="side-card__title">Remo anuncia Gonzalo Plata</p>
+            <ul class="side-card__bullets">
+              <li>Atacante equatoriano chega ao Leão</li>
+              <li>Clube confirma contratação oficial</li>
+            </ul>
+          </div>
+        </a>
+        <a class="side-card" href="../jhonatanrlp.html">
+          <div class="side-card__img-placeholder"></div>
+          <div class="side-card__overlay">
+            <p class="side-card__title">Jhonatanrlp é o novo técnico do Remo</p>
+          </div>
+        </a>
+      </div>
+
     </div>
 
-    <!-- ═══════════════════════════════════════════════════
-         ADICIONAR NOTÍCIAS AQUI — mais recente primeiro
-    ════════════════════════════════════════════════════ -->
-    <div class="news-grid" id="news-grid">
+    <!-- ── GRADE DE NOTÍCIAS ───────────────────────────────────────
+         Adicione mais <a class="news-card"> aqui, mais recente primeiro
+    ──────────────────────────────────────────────────────────── -->
+    <div class="news-grid">
 
       <a class="news-card" href="inter-financas.html">
         <div class="news-card__thumb-placeholder">FOTO</div>
         <div class="news-card__body">
-          <span class="news-card__label">Crise Financeira · OSM</span>
-          <span class="news-card__title">Internacional emite nota sobre crise e anuncia troca do café por esperança</span>
-          <span class="news-card__excerpt">Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.</span>
+          <span class="news-card__label">Crise · OSM</span>
+          <span class="news-card__title">Inter emite nota e anuncia troca do café por esperança</span>
+          <span class="news-card__date">14/06/2026</span>
+        </div>
+      </a>
+
+      <a class="news-card" href="../plata.html">
+        <div class="news-card__thumb-placeholder">FOTO</div>
+        <div class="news-card__body">
+          <span class="news-card__label">Remo · Contratação</span>
+          <span class="news-card__title">Bem-vindo Gonzalo Plata, o novo atacante do Leão</span>
+          <span class="news-card__date">14/06/2026</span>
+        </div>
+      </a>
+
+      <a class="news-card" href="../jhonatanrlp.html">
+        <div class="news-card__thumb-placeholder">FOTO</div>
+        <div class="news-card__body">
+          <span class="news-card__label">Remo · Comunicado</span>
+          <span class="news-card__title">Jhonatanrlp é o novo treinador do Clube do Remo</span>
           <span class="news-card__date">14/06/2026</span>
         </div>
       </a>
@@ -39,13 +88,8 @@
   <footer>
     <span class="footer-brand">Globus</span>
     <p>© 2026 Globus Esportes</p>
-    <p>Todos os direitos reservados</p>
+    <p>OSM · Liga</p>
   </footer>
-
-  <script>
-    const count = document.getElementById('news-grid').querySelectorAll('.news-card').length;
-    document.getElementById('news-count').textContent = count + (count === 1 ? ' notícia' : ' notícias');
-  </script>
 
 </body>
 </html>
