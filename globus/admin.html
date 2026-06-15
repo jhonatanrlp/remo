@@ -314,6 +314,57 @@
     }
   }
 
+  /* ── HELPERS API ── */
+  async function ghGet(path, token) {
+    const res = await fetch(API + path + '?ref=' + BRANCH, {
+      headers: { Authorization: 'token ' + token }
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.message || `HTTP ${res.status}`);
+    }
+    return res.json();
+  }
+
+  async function ghPut(path, token, body) {
+    const res = await fetch(API + path, {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...body, branch: BRANCH })
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, data };
+  }
+
+  /* Commita o JSON com retry automático em caso de conflito (SHA desatualizado) */
+  async function commitJson(nova, imgPath, token, tentativa = 1) {
+    setProgress(75 + tentativa * 5, tentativa > 1 ? `Conflito detectado, tentativa ${tentativa}…` : 'Salvando no GitHub…');
+
+    const jsonData = await ghGet('globus/data/noticias.json', token);
+    const current  = JSON.parse(atob(jsonData.content.replace(/\n/g,'')));
+
+    /* Evita duplicata se a notícia já foi inserida numa tentativa anterior */
+    if (current.find(n => n.id === nova.id)) return;
+
+    const updated    = [{ ...nova, img: imgPath }, ...current];
+    const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2))));
+
+    const { ok, status, data } = await ghPut('globus/data/noticias.json', token, {
+      message: `noticia: ${nova.title} (${currentUser.nome})`,
+      content: newContent,
+      sha: jsonData.sha
+    });
+
+    if (!ok) {
+      /* 409 = SHA desatualizado (commit simultâneo) → retry até 4x */
+      if ((status === 409 || status === 422) && tentativa < 4) {
+        await new Promise(r => setTimeout(r, 800 * tentativa));
+        return commitJson(nova, imgPath, token, tentativa + 1);
+      }
+      throw new Error(data.message || `Erro HTTP ${status}`);
+    }
+  }
+
   /* ── PUBLICAR ── */
   async function publicar() {
     const token = localStorage.getItem('gh_token');
@@ -337,89 +388,51 @@
       /* 1. Upload da foto (se tiver) */
       if (fotoEl.files && fotoEl.files[0]) {
         const file     = fotoEl.files[0];
-        const ext      = file.name.split('.').pop();
-        const filename = slugify(title) + '.' + ext;
+        const ext      = file.name.split('.').pop().toLowerCase();
+        const filename = slugify(title) + '-' + Date.now() + '.' + ext;
         const b64      = await fileToBase64(file);
         const path     = `globus/fotos/${filename}`;
 
-        setProgress(25, 'Enviando foto…');
+        setProgress(20, 'Enviando foto…');
 
-        const upRes = await fetch(API + path + '?ref=' + BRANCH, {
+        /* Verifica se já existe (para pegar SHA e não duplicar) */
+        const existing = await fetch(API + path + '?ref=' + BRANCH, {
           headers: { Authorization: 'token ' + token }
         });
-        const upBody = upRes.ok ? await upRes.json() : null;
+        const existData = existing.ok ? await existing.json() : null;
 
-        await fetch(API + path, {
-          method: 'PUT',
-          headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: `foto: ${filename}`,
-            content: b64,
-            branch: BRANCH,
-            ...(upBody?.sha ? { sha: upBody.sha } : {})
-          })
+        const upRes = await ghPut(path, token, {
+          message: `foto: ${filename}`,
+          content: b64,
+          ...(existData?.sha ? { sha: existData.sha } : {})
         });
 
+        if (!upRes.ok) throw new Error(upRes.data?.message || `Erro ao enviar foto (${upRes.status})`);
+
         imgPath = `fotos/${filename}`;
-        setProgress(55, 'Foto enviada! Atualizando notícias…');
+        setProgress(55, 'Foto enviada!');
       } else {
-        setProgress(40, 'Atualizando notícias…');
+        setProgress(40, 'Preparando…');
       }
 
-      /* 2. Ler noticias.json atual */
-      const jsonRes  = await fetch(API + 'globus/data/noticias.json?ref=' + BRANCH, {
-        headers: { Authorization: 'token ' + token }
-      });
-      const jsonData = await jsonRes.json();
-      const current  = JSON.parse(atob(jsonData.content.replace(/\n/g,'')));
+      /* 2. Montar entrada */
+      const id = currentUser.id + '-' + slugify(title).slice(0, 28) + '-' + Date.now();
+      const nova = { id, title, label, date, img: imgPath, teams: [currentUser.id], destaque: false };
+      if (subtitle) nova.subtitle = subtitle;
 
-      /* 3. Montar nova entrada */
-      const id = currentUser.id + '-' + slugify(title).slice(0, 30) + '-' + Date.now();
-      const nova = {
-        id,
-        title,
-        subtitle: subtitle || undefined,
-        label,
-        date,
-        img: imgPath,
-        teams: [currentUser.id],
-        destaque: false
-      };
-      if (!nova.subtitle) delete nova.subtitle;
-
-      const updated = [nova, ...current];
-
-      /* 4. Commitar noticias.json */
-      setProgress(80, 'Salvando no GitHub…');
-      const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2))));
-
-      const commitRes = await fetch(API + 'globus/data/noticias.json', {
-        method: 'PUT',
-        headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: `noticia: ${title} (${currentUser.nome})`,
-          content: newContent,
-          sha: jsonData.sha,
-          branch: BRANCH
-        })
-      });
-
-      if (!commitRes.ok) {
-        const err = await commitRes.json();
-        throw new Error(err.message || 'Erro ao salvar');
-      }
+      /* 3. Commitar JSON com retry automático */
+      await commitJson(nova, imgPath, token);
 
       setProgress(100, 'Publicado!');
-      msg('post-msg', `✅ Notícia publicada! O site atualiza em ~1 minuto.`, 'success');
+      msg('post-msg', '✅ Notícia publicada! O site atualiza em ~1 minuto.', 'success');
 
-      /* Limpar form */
       document.getElementById('p-title').value = '';
       document.getElementById('p-subtitle').value = '';
       document.getElementById('p-foto').value = '';
       document.getElementById('foto-preview').style.display = 'none';
 
     } catch (e) {
-      msg('post-msg', '❌ Erro: ' + e.message, 'error');
+      msg('post-msg', '❌ Erro: ' + (e.message || JSON.stringify(e)), 'error');
     } finally {
       btn.disabled = false;
     }
