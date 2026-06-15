@@ -15,6 +15,7 @@
   <main class="news-listing">
     <p class="section-label">Últimas Notícias</p>
     <div id="hero-area"></div>
+
     <div class="ad-banner">
       <span class="ad-banner__label">Publicidade</span>
       <img src="anuncio.jpg" alt="Anúncio" />
@@ -42,9 +43,13 @@
       const side1    = resto[0];
       const side2    = resto[1];
 
+      const heroTag  = destaque.file ? 'a' : 'div';
+      const side1Tag = side1?.file   ? 'a' : 'div';
+      const side2Tag = side2?.file   ? 'a' : 'div';
+
       heroArea.innerHTML = `
         <div class="hero-layout">
-          <div class="hero-card">
+          <${heroTag} class="hero-card" ${destaque.file ? `href="${destaque.file}"` : ''}>
             ${destaque.img
               ? `<img class="hero-card__img" src="${destaque.img}" alt="" onerror="this.outerHTML='<div class=&quot;hero-card__color-bg&quot;></div>'">`
               : `<div class="hero-card__color-bg"></div>`}
@@ -52,33 +57,35 @@
               <span class="hero-card__badge">${destaque.label}</span>
               <p class="hero-card__title">${destaque.title}</p>
             </div>
-          </div>
+          </${heroTag}>
           <div class="side-stack">
             ${side1 ? `
-            <div class="side-card">
+            <${side1Tag} class="side-card" ${side1.file ? `href="${side1.file}"` : ''}>
               ${side1.img
                 ? `<img class="side-card__img" src="${side1.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
               <div class="side-card__overlay">
                 <p class="side-card__title">${side1.title}</p>
               </div>
-            </div>` : ''}
+            </${side1Tag}>` : ''}
             ${side2 ? `
-            <div class="side-card">
+            <${side2Tag} class="side-card" ${side2.file ? `href="${side2.file}"` : ''}>
               ${side2.img
                 ? `<img class="side-card__img" src="${side2.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
               <div class="side-card__overlay">
                 <p class="side-card__title">${side2.title}</p>
               </div>
-            </div>` : ''}
+            </${side2Tag}>` : ''}
           </div>
         </div>
       `;
 
       resto.slice(2).forEach(n => {
-        const card = document.createElement('div');
-        card.className = 'news-card';
+        const tag = n.file ? 'a' : 'div';
+        const card = document.createElement(tag);
+        card.className = 'news-card' + (n.file ? ' news-card--link' : '');
+        if (n.file) card.href = n.file;
         card.innerHTML = `
           ${n.img
             ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;>FOTO</div>'">`

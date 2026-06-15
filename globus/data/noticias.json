@@ -1,5 +1,16 @@
 [
   {
+    "id": "athletico-cosmf-kdb",
+    "title": "CosmF responde Athletico-PR: \"Palmeiras contratou dentro das regras — e vamos explicar o que é Legend de uma vez por todas\"",
+    "subtitle": "Confederação esclarece contratação do KDB e dá aula sobre o que é um jogador Legend.",
+    "label": "Nota Oficial · CosmF",
+    "date": "15/06/2026",
+    "img": "fotos/nota ahtletico pr contra a organizacao da liga por conta do palmeiras contratar o kdb.jpg",
+    "file": "artigos/athletico-cosmf-kdb.html",
+    "teams": ["athletico-pr", "palmeiras"],
+    "destaque": true
+  },
+  {
     "id": "inter-financas",
     "title": "Internacional emite nota sobre crise e anuncia troca do café por esperança",
     "subtitle": "Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.",
@@ -7,7 +18,107 @@
     "date": "14/06/2026",
     "img": "fotos/inter nota.jpg",
     "teams": ["inter"],
-    "destaque": true
+    "destaque": false
+  },
+  {
+    "id": "palmeiras-courtois",
+    "title": "Courtois chega ao Palmeiras",
+    "subtitle": "Goleiro belga assina com o Verdão e reforça ainda mais o clube.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": "fotos/courtois no palmeiras.jpg",
+    "teams": ["palmeiras"],
+    "destaque": false
+  },
+  {
+    "id": "vasco-van-dijk",
+    "title": "Van Dijk assina com o Vasco",
+    "subtitle": "Zagueiro holandês chega ao Cruz-Maltino para a temporada.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": "fotos/van dijk no vasco.jpg",
+    "teams": ["vasco"],
+    "destaque": false
+  },
+  {
+    "id": "bragantino-arda-guler",
+    "title": "Arda Güler reforça o Bragantino",
+    "subtitle": "Meia turco chega à Massa Bruta para a temporada.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": "fotos/arda guler na massa bruta.jpg",
+    "teams": ["bragantino"],
+    "destaque": false
+  },
+  {
+    "id": "flamengo-torcida-pedro",
+    "title": "Torcida do Flamengo reage à venda de Pedro",
+    "subtitle": "Rubro-Negro precisou explicar a saída do centroavante após pressão das arquibancadas.",
+    "label": "Futebol",
+    "date": "15/06/2026",
+    "img": "fotos/torcida do flamengo nao gosta da venda do pedro.jpg",
+    "teams": ["flamengo"],
+    "destaque": false
+  },
+  {
+    "id": "gremio-textor",
+    "title": "John Textor compra o Grêmio",
+    "subtitle": "Empresário norte-americano expande seus domínios no futebol brasileiro.",
+    "label": "Negócio",
+    "date": "15/06/2026",
+    "img": "fotos/john textor compra o gremio.jpg",
+    "teams": ["gremio"],
+    "destaque": false
+  },
+  {
+    "id": "gremio-falencia",
+    "title": "Grêmio declara falência",
+    "subtitle": "Clube gaúcho enfrenta crise financeira sem precedentes.",
+    "label": "Crise Financeira",
+    "date": "15/06/2026",
+    "img": "fotos/gremio declara falencia.jpg",
+    "teams": ["gremio"],
+    "destaque": false
+  },
+  {
+    "id": "chape-saf-loco",
+    "title": "Chapecoense vira SAF e Loco Abreu é o novo dono",
+    "subtitle": "Ex-atacante uruguaio assume o controle da Chape no modelo de sociedade anônima.",
+    "label": "Negócio",
+    "date": "15/06/2026",
+    "img": "fotos/chape vira saf e loco abreu ~e dono.jpg",
+    "teams": ["chapecoense"],
+    "destaque": false
+  },
+  {
+    "id": "coxa-mamardhashvili",
+    "title": "Mamardashvili chega ao Coritiba",
+    "subtitle": "Goleiro georgiano reforça o Coxa para a temporada.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": "fotos/mamardhashvili no coxa.jpg",
+    "teams": ["coritiba"],
+    "destaque": false
+  },
+  {
+    "id": "coxa-fernandez-pardo",
+    "title": "Fernández Pardo assina com o Coritiba",
+    "subtitle": "Reforço chega ao Alviverde para compor o elenco da temporada.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": "fotos/fernandez pardo coxa.jpg",
+    "teams": ["coritiba"],
+    "destaque": false
+  },
+  {
+    "id": "flu-pedro-tecnico",
+    "title": "Pedro é o novo técnico do Fluminense",
+    "subtitle": "Ex-jogador é anunciado como novo treinador do clube carioca.",
+    "label": "Comunicado Oficial",
+    "date": "14/06/2026",
+    "img": "fotos/pedro no flu.jpg",
+    "teams": ["fluminense"],
+    "destaque": false
   },
   {
     "id": "inter-pietro",
@@ -145,18 +256,8 @@
     "subtitle": "Atacante equatoriano é apresentado no Clube do Remo.",
     "label": "Contratação",
     "date": "14/06/2026",
-    "img": "../../plata.png",
+    "img": null,
     "teams": ["remo"],
-    "destaque": false
-  },
-  {
-      "id": "flu-pedro-tecnico",
-    "title": "Pedro é o novo técnico do Fluminense",
-    "subtitle": "Ex-jogador é anunciado como novo treinador do clube carioca.",
-    "label": "Contratação",
-    "date": "14/06/2026",
-    "img": "fotos/pedro no flu.jpg",
-    "teams": ["fluminense"],
     "destaque": false
   }
 ]

@@ -200,14 +200,21 @@ body {
 /* ── HOMEPAGE ── */
 .news-listing { max-width: 1140px; margin: 0 auto; padding: 28px 20px 80px; }
 .ad-banner {
-  position: relative; text-align: center; margin: 18px 0;
-  background: #e8e8e8; border-radius: 4px; overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+.ad-banner__label {
+  display: block; text-align: center;
+  font-size: 9px; font-weight: 700; letter-spacing: .15em; color: #bbb;
+  text-transform: uppercase; padding: 5px 0 4px;
+  border-bottom: 1px solid #eee; background: #f9f9f9;
 }
 .ad-banner img { display: block; width: 100%; height: auto; }
-.ad-banner__label {
-  position: absolute; top: 4px; left: 8px;
-  font-size: 9px; color: #aaa; letter-spacing: .08em; text-transform: uppercase;
-}
+.news-card--link { cursor: pointer; text-decoration: none; }
+.news-card--link:hover { box-shadow: 0 6px 24px rgba(0,0,0,.18); transform: scale(1.03); }
 .section-label {
   font-size: 11px; font-weight: 900; letter-spacing: .12em;
   text-transform: uppercase; color: #1a4a22;
@@ -357,6 +364,13 @@ body {
 .cal-match__highlighted .cal-match__team { color: #1a4a22; }
 
 /* ── ARTICLE ── */
+.article-page { max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }
+.article-back { margin-bottom: 20px; }
+.article-back a { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #555; text-decoration: none; }
+.article-back a:hover { color: #1a4a22; }
+.article__hero { width: 100%; height: auto; display: block; border-radius: 4px; margin: 18px 0 28px; }
+.article__meta { font-size: 12px; color: #888; margin: 8px 0 0; }
+.article__body h2 { font-size: 18px; font-weight: 900; color: #111; margin: 32px 0 12px; text-transform: uppercase; letter-spacing: .04em; border-left: 4px solid #1a4a22; padding-left: 10px; }
 .article-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
 .article__back {
   display: inline-flex; align-items: center; gap: 6px;
