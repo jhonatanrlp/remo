@@ -1,5 +1,17 @@
 [
   {
+    "id": "remo-remo-contrata-van-dijk-jr-1781564804658",
+    "title": "Remo contrata Van Dijk Jr.",
+    "label": "Contratação",
+    "date": "15/06/2026",
+    "img": null,
+    "teams": [
+      "remo"
+    ],
+    "destaque": false,
+    "subtitle": "Zagueiro filho da lenda holandesa chega ao Leão Azul para a temporada. Categoria: Contratação"
+  },
+  {
     "id": "athletico-cosmf-kdb",
     "title": "CosmF responde Athletico-PR: \"Palmeiras contratou dentro das regras — e vamos explicar o que é Legend de uma vez por todas\"",
     "subtitle": "Confederação esclarece contratação do KDB e dá aula sobre o que é um jogador Legend.",
@@ -7,7 +19,10 @@
     "date": "15/06/2026",
     "img": "fotos/nota ahtletico pr contra a organizacao da liga por conta do palmeiras contratar o kdb.jpg",
     "file": "artigos/athletico-cosmf-kdb.html",
-    "teams": ["athletico-pr", "palmeiras"],
+    "teams": [
+      "athletico-pr",
+      "palmeiras"
+    ],
     "destaque": true
   },
   {
@@ -17,7 +32,9 @@
     "label": "Crise Financeira",
     "date": "14/06/2026",
     "img": "fotos/inter nota.jpg",
-    "teams": ["inter"],
+    "teams": [
+      "inter"
+    ],
     "destaque": false
   },
   {
@@ -27,7 +44,9 @@
     "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/courtois no palmeiras.jpg",
-    "teams": ["palmeiras"],
+    "teams": [
+      "palmeiras"
+    ],
     "destaque": false
   },
   {
@@ -37,7 +56,9 @@
     "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/van dijk no vasco.jpg",
-    "teams": ["vasco"],
+    "teams": [
+      "vasco"
+    ],
     "destaque": false
   },
   {
@@ -47,7 +68,9 @@
     "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/arda guler na massa bruta.jpg",
-    "teams": ["bragantino"],
+    "teams": [
+      "bragantino"
+    ],
     "destaque": false
   },
   {
@@ -57,7 +80,9 @@
     "label": "Futebol",
     "date": "15/06/2026",
     "img": "fotos/torcida do flamengo nao gosta da venda do pedro.jpg",
-    "teams": ["flamengo"],
+    "teams": [
+      "flamengo"
+    ],
     "destaque": false
   },
   {
@@ -67,7 +92,9 @@
     "label": "Negócio",
     "date": "15/06/2026",
     "img": "fotos/john textor compra o gremio.jpg",
-    "teams": ["gremio"],
+    "teams": [
+      "gremio"
+    ],
     "destaque": false
   },
   {
@@ -77,7 +104,9 @@
     "label": "Crise Financeira",
     "date": "15/06/2026",
     "img": "fotos/gremio declara falencia.jpg",
-    "teams": ["gremio"],
+    "teams": [
+      "gremio"
+    ],
     "destaque": false
   },
   {
@@ -87,7 +116,9 @@
     "label": "Negócio",
     "date": "15/06/2026",
     "img": "fotos/chape vira saf e loco abreu ~e dono.jpg",
-    "teams": ["chapecoense"],
+    "teams": [
+      "chapecoense"
+    ],
     "destaque": false
   },
   {
@@ -97,7 +128,9 @@
     "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/mamardhashvili no coxa.jpg",
-    "teams": ["coritiba"],
+    "teams": [
+      "coritiba"
+    ],
     "destaque": false
   },
   {
@@ -107,7 +140,9 @@
     "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/fernandez pardo coxa.jpg",
-    "teams": ["coritiba"],
+    "teams": [
+      "coritiba"
+    ],
     "destaque": false
   },
   {
@@ -117,7 +152,9 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pedro no flu.jpg",
-    "teams": ["fluminense"],
+    "teams": [
+      "fluminense"
+    ],
     "destaque": false
   },
   {
@@ -127,7 +164,9 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pietro_quadros_no_inter.jpg",
-    "teams": ["inter"],
+    "teams": [
+      "inter"
+    ],
     "destaque": false
   },
   {
@@ -137,7 +176,9 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pp tecnico no flamengo.jpg",
-    "teams": ["flamengo"],
+    "teams": [
+      "flamengo"
+    ],
     "destaque": false
   },
   {
@@ -147,7 +188,9 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/yzzy no vitoria.jpg",
-    "teams": ["vitoria"],
+    "teams": [
+      "vitoria"
+    ],
     "destaque": false
   },
   {
@@ -157,7 +200,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/adeyeme no inter.jpg",
-    "teams": ["inter"],
+    "teams": [
+      "inter"
+    ],
     "destaque": false
   },
   {
@@ -167,7 +212,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/nico gonzalez no inter.jpg",
-    "teams": ["inter"],
+    "teams": [
+      "inter"
+    ],
     "destaque": false
   },
   {
@@ -177,7 +224,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/joao_victor+palmeiras.jpg",
-    "teams": ["palmeiras"],
+    "teams": [
+      "palmeiras"
+    ],
     "destaque": false
   },
   {
@@ -187,7 +236,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/jack elliot (nao o harvey) no galo.jpg",
-    "teams": ["atletico-mg"],
+    "teams": [
+      "atletico-mg"
+    ],
     "destaque": false
   },
   {
@@ -197,7 +248,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/coutinho_tecnico_no_vasco.jpg",
-    "teams": ["atletico-mg"],
+    "teams": [
+      "atletico-mg"
+    ],
     "destaque": false
   },
   {
@@ -207,7 +260,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/diallo no coxa.jpg",
-    "teams": ["coritiba"],
+    "teams": [
+      "coritiba"
+    ],
     "destaque": false
   },
   {
@@ -217,7 +272,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/rafael_blackman_no_mirrasol.jpg",
-    "teams": ["mirassol"],
+    "teams": [
+      "mirassol"
+    ],
     "destaque": false
   },
   {
@@ -227,7 +284,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/james bree mirassol.jpg",
-    "teams": ["mirassol"],
+    "teams": [
+      "mirassol"
+    ],
     "destaque": false
   },
   {
@@ -237,7 +296,9 @@
     "label": "Futebol",
     "date": "14/06/2026",
     "img": "fotos/jogador gabi gol no flu.jpg",
-    "teams": ["fluminense"],
+    "teams": [
+      "fluminense"
+    ],
     "destaque": false
   },
   {
@@ -247,7 +308,9 @@
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/jhonatan ramos no remo.jpg",
-    "teams": ["remo"],
+    "teams": [
+      "remo"
+    ],
     "destaque": false
   },
   {
@@ -257,7 +320,9 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": null,
-    "teams": ["remo"],
+    "teams": [
+      "remo"
+    ],
     "destaque": false
   }
 ]
