@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Globus Esportes</title>
+  <link rel="icon" href="../remo.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <main class="news-listing">
+    <div class="news-listing__header">
+      <h1 class="news-listing__title">Últimas Notícias</h1>
+      <span class="news-listing__count" id="news-count"></span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         ADICIONAR NOTÍCIAS AQUI — mais recente primeiro
+    ════════════════════════════════════════════════════ -->
+    <div class="news-grid" id="news-grid">
+
+      <a class="news-card" href="inter-financas.html">
+        <div class="news-card__thumb-placeholder">FOTO</div>
+        <div class="news-card__body">
+          <span class="news-card__label">Crise Financeira · OSM</span>
+          <span class="news-card__title">Internacional emite nota sobre crise e anuncia troca do café por esperança</span>
+          <span class="news-card__excerpt">Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.</span>
+          <span class="news-card__date">14/06/2026</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-brand">Globus</span>
+    <p>© 2026 Globus Esportes</p>
+    <p>Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    const count = document.getElementById('news-grid').querySelectorAll('.news-card').length;
+    document.getElementById('news-count').textContent = count + (count === 1 ? ' notícia' : ' notícias');
+  </script>
+
+</body>
+</html>
