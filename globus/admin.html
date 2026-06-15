@@ -270,6 +270,13 @@
       .normalize('NFD').replace(/[̀-ͯ]/g,'')
       .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   }
+  /* btoa() nativo quebra com UTF-8 — usa TextEncoder para preservar acentos */
+  function utf8ToBase64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let bin = '';
+    bytes.forEach(b => bin += String.fromCharCode(b));
+    return btoa(bin);
+  }
 
   /* ── SETUP TOKEN ── */
   function saveToken() {
@@ -347,7 +354,7 @@
     if (current.find(n => n.id === nova.id)) return;
 
     const updated    = [{ ...nova, img: imgPath }, ...current];
-    const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2))));
+    const newContent = utf8ToBase64(JSON.stringify(updated, null, 2));
 
     const { ok, status, data } = await ghPut('globus/data/noticias.json', token, {
       message: `noticia: ${nova.title} (${currentUser.nome})`,

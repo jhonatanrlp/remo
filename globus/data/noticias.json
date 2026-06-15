@@ -1,280 +1,233 @@
 [
   {
     "id": "athletico-cosmf-kdb",
-    "title": "CosmF responde Athletico-PR: \"Palmeiras contratou dentro das regras â e vamos explicar o que Ã© Legend de uma vez por todas\"",
-    "subtitle": "ConfederaÃ§Ã£o esclarece contrataÃ§Ã£o do KDB e dÃ¡ aula sobre o que Ã© um jogador Legend.",
-    "label": "Nota Oficial Â· CosmF",
+    "title": "CosmF responde Athletico-PR: \"Palmeiras contratou dentro das regras — e vamos explicar o que é Legend de uma vez por todas\"",
+    "subtitle": "Confederação esclarece contratação do KDB e dá aula sobre o que é um jogador Legend.",
+    "label": "Nota Oficial · CosmF",
     "date": "15/06/2026",
     "img": "fotos/nota ahtletico pr contra a organizacao da liga por conta do palmeiras contratar o kdb.jpg",
     "file": "artigos/athletico-cosmf-kdb.html",
-    "teams": [
-      "athletico-pr",
-      "palmeiras"
-    ],
+    "teams": ["athletico-pr", "palmeiras"],
     "destaque": true
   },
   {
     "id": "inter-financas",
-    "title": "Internacional emite nota sobre crise e anuncia troca do cafÃ© por esperanÃ§a",
-    "subtitle": "Clube gaÃºcho revela que orÃ§amento foi feito no modo carreira do FIFA.",
+    "title": "Internacional emite nota sobre crise e anuncia troca do café por esperança",
+    "subtitle": "Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.",
     "label": "Crise Financeira",
     "date": "14/06/2026",
     "img": "fotos/inter nota.jpg",
-    "teams": [
-      "inter"
-    ],
+    "teams": ["inter"],
     "destaque": false
   },
   {
     "id": "palmeiras-courtois",
     "title": "Courtois chega ao Palmeiras",
-    "subtitle": "Goleiro belga assina com o VerdÃ£o e reforÃ§a ainda mais o clube.",
-    "label": "ContrataÃ§Ã£o",
+    "subtitle": "Goleiro belga assina com o Verdão e reforça ainda mais o clube.",
+    "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/courtois no palmeiras.jpg",
-    "teams": [
-      "palmeiras"
-    ],
+    "teams": ["palmeiras"],
     "destaque": false
   },
   {
     "id": "vasco-van-dijk",
     "title": "Van Dijk assina com o Vasco",
-    "subtitle": "Zagueiro holandÃªs chega ao Cruz-Maltino para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "subtitle": "Zagueiro holandês chega ao Cruz-Maltino para a temporada.",
+    "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/van dijk no vasco.jpg",
-    "teams": [
-      "vasco"
-    ],
+    "teams": ["vasco"],
     "destaque": false
   },
   {
     "id": "bragantino-arda-guler",
-    "title": "Arda GÃ¼ler reforÃ§a o Bragantino",
-    "subtitle": "Meia turco chega Ã  Massa Bruta para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Arda Güler reforça o Bragantino",
+    "subtitle": "Meia turco chega à Massa Bruta para a temporada.",
+    "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/arda guler na massa bruta.jpg",
-    "teams": [
-      "bragantino"
-    ],
+    "teams": ["bragantino"],
     "destaque": false
   },
   {
     "id": "flamengo-torcida-pedro",
-    "title": "Torcida do Flamengo reage Ã  venda de Pedro",
-    "subtitle": "Rubro-Negro precisou explicar a saÃ­da do centroavante apÃ³s pressÃ£o das arquibancadas.",
+    "title": "Torcida do Flamengo reage à venda de Pedro",
+    "subtitle": "Rubro-Negro precisou explicar a saída do centroavante após pressão das arquibancadas.",
     "label": "Futebol",
     "date": "15/06/2026",
     "img": "fotos/torcida do flamengo nao gosta da venda do pedro.jpg",
-    "teams": [
-      "flamengo"
-    ],
+    "teams": ["flamengo"],
     "destaque": false
   },
   {
     "id": "gremio-textor",
-    "title": "John Textor compra o GrÃªmio",
-    "subtitle": "EmpresÃ¡rio norte-americano expande seus domÃ­nios no futebol brasileiro.",
-    "label": "NegÃ³cio",
+    "title": "John Textor compra o Grêmio",
+    "subtitle": "Empresário norte-americano expande seus domínios no futebol brasileiro.",
+    "label": "Negócio",
     "date": "15/06/2026",
     "img": "fotos/john textor compra o gremio.jpg",
-    "teams": [
-      "gremio"
-    ],
+    "teams": ["gremio"],
     "destaque": false
   },
   {
     "id": "gremio-falencia",
-    "title": "GrÃªmio declara falÃªncia",
-    "subtitle": "Clube gaÃºcho enfrenta crise financeira sem precedentes.",
+    "title": "Grêmio declara falência",
+    "subtitle": "Clube gaúcho enfrenta crise financeira sem precedentes.",
     "label": "Crise Financeira",
     "date": "15/06/2026",
     "img": "fotos/gremio declara falencia.jpg",
-    "teams": [
-      "gremio"
-    ],
+    "teams": ["gremio"],
     "destaque": false
   },
   {
     "id": "chape-saf-loco",
-    "title": "Chapecoense vira SAF e Loco Abreu Ã© o novo dono",
-    "subtitle": "Ex-atacante uruguaio assume o controle da Chape no modelo de sociedade anÃ´nima.",
-    "label": "NegÃ³cio",
+    "title": "Chapecoense vira SAF e Loco Abreu é o novo dono",
+    "subtitle": "Ex-atacante uruguaio assume o controle da Chape no modelo de sociedade anônima.",
+    "label": "Negócio",
     "date": "15/06/2026",
     "img": "fotos/chape vira saf e loco abreu ~e dono.jpg",
-    "teams": [
-      "chapecoense"
-    ],
+    "teams": ["chapecoense"],
     "destaque": false
   },
   {
     "id": "coxa-mamardhashvili",
     "title": "Mamardashvili chega ao Coritiba",
-    "subtitle": "Goleiro georgiano reforÃ§a o Coxa para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "subtitle": "Goleiro georgiano reforça o Coxa para a temporada.",
+    "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/mamardhashvili no coxa.jpg",
-    "teams": [
-      "coritiba"
-    ],
+    "teams": ["coritiba"],
     "destaque": false
   },
   {
     "id": "coxa-fernandez-pardo",
-    "title": "FernÃ¡ndez Pardo assina com o Coritiba",
-    "subtitle": "ReforÃ§o chega ao Alviverde para compor o elenco da temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Fernández Pardo assina com o Coritiba",
+    "subtitle": "Reforço chega ao Alviverde para compor o elenco da temporada.",
+    "label": "Contratação",
     "date": "15/06/2026",
     "img": "fotos/fernandez pardo coxa.jpg",
-    "teams": [
-      "coritiba"
-    ],
+    "teams": ["coritiba"],
     "destaque": false
   },
   {
     "id": "flu-pedro-tecnico",
-    "title": "Pedro Ã© o novo tÃ©cnico do Fluminense",
-    "subtitle": "Ex-jogador Ã© anunciado como novo treinador do clube carioca.",
+    "title": "Pedro é o novo técnico do Fluminense",
+    "subtitle": "Ex-jogador é anunciado como novo treinador do clube carioca.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pedro no flu.jpg",
-    "teams": [
-      "fluminense"
-    ],
+    "teams": ["fluminense"],
     "destaque": false
   },
   {
     "id": "inter-pietro",
-    "title": "Pietro Quadros Ã© o novo tÃ©cnico do Internacional",
+    "title": "Pietro Quadros é o novo técnico do Internacional",
     "subtitle": "Diretoria do Colorado confirma nome do novo treinador.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pietro_quadros_no_inter.jpg",
-    "teams": [
-      "inter"
-    ],
+    "teams": ["inter"],
     "destaque": false
   },
   {
     "id": "flamengo-pp",
-    "title": "PP Ã© o novo tÃ©cnico do Flamengo",
+    "title": "PP é o novo técnico do Flamengo",
     "subtitle": "Rubro-Negro anuncia oficialmente o novo comandante da equipe principal.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/pp tecnico no flamengo.jpg",
-    "teams": [
-      "flamengo"
-    ],
+    "teams": ["flamengo"],
     "destaque": false
   },
   {
     "id": "vitoria-yzzy",
-    "title": "Yzzy assume o VitÃ³ria",
-    "subtitle": "Novo tÃ©cnico Ã© apresentado no LeÃ£o da Barra.",
+    "title": "Yzzy assume o Vitória",
+    "subtitle": "Novo técnico é apresentado no Leão da Barra.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/yzzy no vitoria.jpg",
-    "teams": [
-      "vitoria"
-    ],
+    "teams": ["vitoria"],
     "destaque": false
   },
   {
     "id": "inter-adeyemi",
     "title": "Adeyemi chega ao Internacional",
-    "subtitle": "Atacante alemÃ£o reforÃ§a o Colorado na janela de transferÃªncias.",
-    "label": "ContrataÃ§Ã£o",
+    "subtitle": "Atacante alemão reforça o Colorado na janela de transferências.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/adeyeme no inter.jpg",
-    "teams": [
-      "inter"
-    ],
+    "teams": ["inter"],
     "destaque": false
   },
   {
     "id": "inter-nico-gonzalez",
-    "title": "Nico GonzÃ¡lez chega ao Colorado",
-    "subtitle": "Meia espanhol reforÃ§a o Inter para a sequÃªncia da temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Nico González chega ao Colorado",
+    "subtitle": "Meia espanhol reforça o Inter para a sequência da temporada.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/nico gonzalez no inter.jpg",
-    "teams": [
-      "inter"
-    ],
+    "teams": ["inter"],
     "destaque": false
   },
   {
     "id": "palmeiras-joao-victor",
-    "title": "JoÃ£o Victor assina com o VerdÃ£o",
-    "subtitle": "Defensor chega ao Palmeiras para reforÃ§ar a zaga.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "João Victor assina com o Verdão",
+    "subtitle": "Defensor chega ao Palmeiras para reforçar a zaga.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/joao_victor+palmeiras.jpg",
-    "teams": [
-      "palmeiras"
-    ],
+    "teams": ["palmeiras"],
     "destaque": false
   },
   {
     "id": "galo-jack-elliot",
-    "title": "Jack Elliot reforÃ§a o Galo",
-    "subtitle": "Zagueiro inglÃªs Ã© o novo defensor atleticano.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Jack Elliot reforça o Galo",
+    "subtitle": "Zagueiro inglês é o novo defensor atleticano.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/jack elliot (nao o harvey) no galo.jpg",
-    "teams": [
-      "atletico-mg"
-    ],
+    "teams": ["atletico-mg"],
     "destaque": false
   },
   {
     "id": "galo-coutinho",
-    "title": "Coutinho Ã© o novo reforÃ§o do Galo",
-    "subtitle": "Meia brasileiro assina com o AtlÃ©tico-MG apÃ³s passagem pela Europa.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Coutinho é o novo reforço do Galo",
+    "subtitle": "Meia brasileiro assina com o Atlético-MG após passagem pela Europa.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/coutinho_tecnico_no_vasco.jpg",
-    "teams": [
-      "atletico-mg"
-    ],
+    "teams": ["atletico-mg"],
     "destaque": false
   },
   {
     "id": "coritiba-diallo",
     "title": "Diallo chega ao Coritiba",
     "subtitle": "Atacante assina contrato com o Coxa para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/diallo no coxa.jpg",
-    "teams": [
-      "coritiba"
-    ],
+    "teams": ["coritiba"],
     "destaque": false
   },
   {
     "id": "mirassol-rafael",
-    "title": "Rafael Blackman reforÃ§a o Mirassol",
+    "title": "Rafael Blackman reforça o Mirassol",
     "subtitle": "Atacante assina com o clube paulista para a temporada 2026.",
-    "label": "ContrataÃ§Ã£o",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/rafael_blackman_no_mirrasol.jpg",
-    "teams": [
-      "mirassol"
-    ],
+    "teams": ["mirassol"],
     "destaque": false
   },
   {
     "id": "mirassol-james-bree",
-    "title": "James Bree Ã© o novo reforÃ§o do Mirassol",
-    "subtitle": "Lateral-direito inglÃªs chega ao clube paulista para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "James Bree é o novo reforço do Mirassol",
+    "subtitle": "Lateral-direito inglês chega ao clube paulista para a temporada.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/james bree mirassol.jpg",
-    "teams": [
-      "mirassol"
-    ],
+    "teams": ["mirassol"],
     "destaque": false
   },
   {
@@ -284,33 +237,27 @@
     "label": "Futebol",
     "date": "14/06/2026",
     "img": "fotos/jogador gabi gol no flu.jpg",
-    "teams": [
-      "fluminense"
-    ],
+    "teams": ["fluminense"],
     "destaque": false
   },
   {
     "id": "remo-jhonatanrlp",
-    "title": "Jhonatanrlp Ã© o novo tÃ©cnico do Clube do Remo",
-    "subtitle": "Diretoria do LeÃ£o anuncia oficialmente o novo treinador.",
+    "title": "Jhonatanrlp é o novo técnico do Clube do Remo",
+    "subtitle": "Diretoria do Leão anuncia oficialmente o novo treinador.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/jhonatan ramos no remo.jpg",
-    "teams": [
-      "remo"
-    ],
+    "teams": ["remo"],
     "destaque": false
   },
   {
     "id": "remo-plata",
-    "title": "Bem-vindo Gonzalo Plata ao LeÃ£o Azul",
-    "subtitle": "Atacante equatoriano Ã© apresentado no Clube do Remo.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Bem-vindo Gonzalo Plata ao Leão Azul",
+    "subtitle": "Atacante equatoriano é apresentado no Clube do Remo.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": null,
-    "teams": [
-      "remo"
-    ],
+    "teams": ["remo"],
     "destaque": false
   }
 ]
