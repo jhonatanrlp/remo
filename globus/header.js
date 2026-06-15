@@ -36,12 +36,12 @@ document.getElementById('site-header').innerHTML = `
         </svg>
         <span>Buscar</span>
       </div>
-      <div class="login-btn">
+      <a class="login-btn" href="${GLOBUS_BASE}admin.html">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
         Login
-      </div>
+      </a>
     </div>
   </header>
 

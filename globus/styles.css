@@ -129,7 +129,9 @@ body {
   background: #f5d000;
   border-radius: 20px;
   padding: 6px 16px;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s;
   font-size: 13px;
   font-weight: 700;
   color: #1a4a22;
