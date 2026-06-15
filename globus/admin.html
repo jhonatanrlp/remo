@@ -270,12 +270,18 @@
       .normalize('NFD').replace(/[̀-ͯ]/g,'')
       .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   }
-  /* btoa() nativo quebra com UTF-8 — usa TextEncoder para preservar acentos */
+  /* btoa/atob nativos quebram com UTF-8 — usa TextEncoder/TextDecoder */
   function utf8ToBase64(str) {
     const bytes = new TextEncoder().encode(str);
     let bin = '';
     bytes.forEach(b => bin += String.fromCharCode(b));
     return btoa(bin);
+  }
+  function base64ToUtf8(b64) {
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
   }
 
   /* ── SETUP TOKEN ── */
@@ -348,7 +354,7 @@
     setProgress(75 + tentativa * 5, tentativa > 1 ? `Conflito detectado, tentativa ${tentativa}…` : 'Salvando no GitHub…');
 
     const jsonData = await ghGet('globus/data/noticias.json', token);
-    const current  = JSON.parse(atob(jsonData.content.replace(/\n/g,'')));
+    const current  = JSON.parse(base64ToUtf8(jsonData.content.replace(/\n/g,'')));
 
     /* Evita duplicata se a notícia já foi inserida numa tentativa anterior */
     if (current.find(n => n.id === nova.id)) return;
