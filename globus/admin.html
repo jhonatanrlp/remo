@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Globus Esportes</title>
+  <link rel="icon" href="../remo.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .admin-wrap {
+      max-width: 520px; margin: 48px auto; padding: 0 20px 80px;
+    }
+    .admin-card {
+      background: #fff; border-radius: 8px; padding: 36px 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    }
+    .admin-title {
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 22px; font-weight: 900; color: #1a4a22;
+      text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px;
+    }
+    .admin-sub { font-size: 13px; color: #888; margin-bottom: 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: #555; margin-bottom: 6px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 10px 14px; border: 1.5px solid #ddd; border-radius: 6px;
+      font-size: 14px; font-family: inherit; background: #fafafa;
+      transition: border-color .15s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: #1a4a22; background: #fff;
+    }
+    .form-group textarea { min-height: 80px; resize: vertical; }
+    .btn-primary {
+      width: 100%; padding: 12px; background: #1a4a22; color: #fff;
+      border: none; border-radius: 6px; font-size: 14px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-primary:hover { background: #256630; }
+    .btn-primary:disabled { background: #aaa; cursor: not-allowed; }
+    .btn-secondary {
+      background: none; border: 1.5px solid #ddd; color: #555;
+      padding: 8px 16px; border-radius: 6px; font-size: 12px;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      cursor: pointer; margin-top: 10px;
+    }
+    .alert {
+      padding: 12px 16px; border-radius: 6px; font-size: 13px;
+      font-weight: 600; margin-bottom: 18px;
+    }
+    .alert-error { background: #ffeaea; color: #c00; border: 1px solid #fcc; }
+    .alert-success { background: #eafff0; color: #1a4a22; border: 1px solid #b0e8c0; }
+    .alert-info { background: #fffbea; color: #7a5f00; border: 1px solid #f5e080; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+    .badge-team {
+      display: inline-block; background: #e8f5ea; color: #1a4a22;
+      border-radius: 20px; padding: 4px 14px; font-size: 13px;
+      font-weight: 700; margin-bottom: 20px;
+    }
+    .file-preview { width: 100%; border-radius: 4px; margin-top: 10px; display: none; }
+    #section-setup, #section-login, #section-post { display: none; }
+    .setup-note { font-size: 12px; color: #aaa; margin-top: 8px; line-height: 1.5; }
+    .token-visibility { position: relative; }
+    .token-visibility input { padding-right: 42px; }
+    .toggle-pw {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #aaa; font-size: 14px;
+    }
+    .logout-btn {
+      font-size: 11px; color: #aaa; background: none; border: none;
+      cursor: pointer; float: right; margin-top: -4px; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .logout-btn:hover { color: #c00; }
+    .progress-bar {
+      height: 4px; background: #eee; border-radius: 2px; margin-top: 14px; display: none;
+    }
+    .progress-bar__fill {
+      height: 100%; background: #1a4a22; border-radius: 2px;
+      width: 0%; transition: width .3s;
+    }
+    .step-label { font-size: 12px; color: #888; margin-top: 6px; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <main class="admin-wrap">
+
+    <!-- SETUP (só aparece se não tiver token) -->
+    <div id="section-setup" class="admin-card">
+      <p class="admin-title">Configuração inicial</p>
+      <p class="admin-sub">Configure o token de acesso ao GitHub uma vez. Só o dono do site precisa fazer isso.</p>
+      <div class="alert alert-info">
+        Crie um token em <strong>github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong>.
+        Permissão necessária: <strong>Contents: Read and write</strong> no repositório <strong>jhonatanrlp/remo</strong>.
+      </div>
+      <div id="setup-msg"></div>
+      <div class="form-group">
+        <label>GitHub Personal Access Token</label>
+        <div class="token-visibility">
+          <input type="password" id="token-input" placeholder="github_pat_..." />
+          <button class="toggle-pw" onclick="togglePw('token-input')">👁</button>
+        </div>
+        <p class="setup-note">O token fica salvo só no seu navegador (localStorage). Nunca vai para o código.</p>
+      </div>
+      <button class="btn-primary" onclick="saveToken()">Salvar token</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="section-login" class="admin-card">
+      <p class="admin-title">Globus · Admin</p>
+      <p class="admin-sub">Entre com seu login e senha para publicar notícias.</p>
+      <div id="login-msg"></div>
+      <div class="form-group">
+        <label>Login</label>
+        <input type="text" id="login-user" placeholder="seu nome" autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <div class="token-visibility">
+          <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password"
+                 onkeydown="if(event.key==='Enter') doLogin()" />
+          <button class="toggle-pw" onclick="togglePw('login-pass')">👁</button>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="doLogin()">Entrar</button>
+    </div>
+
+    <!-- POSTAR NOTÍCIA -->
+    <div id="section-post" class="admin-card">
+      <button class="logout-btn" onclick="doLogout()">Sair</button>
+      <p class="admin-title">Nova notícia</p>
+      <div id="post-team-badge"></div>
+      <div id="post-msg"></div>
+
+      <div class="form-group">
+        <label>Título *</label>
+        <input type="text" id="p-title" placeholder="Título da notícia" />
+      </div>
+      <div class="form-group">
+        <label>Linha fina (subtítulo)</label>
+        <input type="text" id="p-subtitle" placeholder="Descrição curta" />
+      </div>
+      <div class="form-group">
+        <label>Categoria</label>
+        <select id="p-label">
+          <option>Contratação</option>
+          <option>Comunicado Oficial</option>
+          <option>Futebol</option>
+          <option>Nota Oficial · CosmF</option>
+          <option>Crise Financeira</option>
+          <option>Negócio</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Data</label>
+        <input type="text" id="p-date" placeholder="15/06/2026" />
+      </div>
+      <div class="form-group">
+        <label>Foto</label>
+        <input type="file" id="p-foto" accept="image/*" onchange="previewFoto(this)" />
+        <img id="foto-preview" class="file-preview" alt="Preview" />
+      </div>
+
+      <hr class="divider" />
+
+      <button class="btn-primary" id="btn-publish" onclick="publicar()">Publicar notícia</button>
+      <div class="progress-bar" id="progress-bar">
+        <div class="progress-bar__fill" id="progress-fill"></div>
+      </div>
+      <p class="step-label" id="step-label"></p>
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="footer-brand">Globus</span>
+    <p>© 2026 Globus Esportes</p>
+    <p>OSM · Liga</p>
+  </footer>
+
+  <script>
+  /* ── CONFIGURAÇÃO ── */
+  const REPO    = 'jhonatanrlp/remo';
+  const API     = 'https://api.github.com/repos/' + REPO + '/contents/';
+  const BRANCH  = 'master';
+
+  const USERS = {
+    'coutinho':       { id: 'atletico-mg',  nome: 'Atlético-MG'   },
+    'gabriel':        { id: 'athletico-pr', nome: 'Athletico-PR'   },
+    'jurandir':       { id: 'bahia',        nome: 'Bahia'          },
+    'guilherme':      { id: 'botafogo',     nome: 'Botafogo'       },
+    'leonardo':       { id: 'bragantino',   nome: 'Bragantino'     },
+    'martfinn':       { id: 'chapecoense',  nome: 'Chapecoense'    },
+    'sayro':          { id: 'corinthians',  nome: 'Corinthians'    },
+    'zaquieu':        { id: 'coritiba',     nome: 'Coritiba'       },
+    'lemos':          { id: 'cruzeiro',     nome: 'Cruzeiro'       },
+    'pp':             { id: 'flamengo',     nome: 'Flamengo'       },
+    'pedro':          { id: 'fluminense',   nome: 'Fluminense'     },
+    'felipe':         { id: 'gremio',       nome: 'Grêmio'         },
+    'pietro_quadros': { id: 'inter',        nome: 'Internacional'  },
+    'rafael':         { id: 'mirassol',     nome: 'Mirassol'       },
+    'joao':           { id: 'palmeiras',    nome: 'Palmeiras'      },
+    'jhonatan':       { id: 'remo',         nome: 'Remo'           },
+    'wanderson':      { id: 'santos',       nome: 'Santos'         },
+    'duarte':         { id: 'sao-paulo',    nome: 'São Paulo'      },
+    'kadu':           { id: 'vasco',        nome: 'Vasco'          },
+    'vinicius':       { id: 'vitoria',      nome: 'Vitória'        },
+  };
+
+  /* ── ESTADO ── */
+  let currentUser = null;
+
+  /* ── INIT ── */
+  window.addEventListener('DOMContentLoaded', () => {
+    const today = new Date();
+    document.getElementById('p-date').value =
+      String(today.getDate()).padStart(2,'0') + '/' +
+      String(today.getMonth()+1).padStart(2,'0') + '/' +
+      today.getFullYear();
+
+    const token = localStorage.getItem('gh_token');
+    const sess  = sessionStorage.getItem('globus_user');
+
+    if (sess) {
+      currentUser = JSON.parse(sess);
+      showPost();
+    } else if (token) {
+      show('section-login');
+    } else {
+      show('section-setup');
+    }
+  });
+
+  /* ── UTILS ── */
+  function show(id) {
+    ['section-setup','section-login','section-post'].forEach(s =>
+      document.getElementById(s).style.display = s === id ? 'block' : 'none'
+    );
+  }
+  function msg(elId, text, type) {
+    const el = document.getElementById(elId);
+    el.innerHTML = text ? `<div class="alert alert-${type}">${text}</div>` : '';
+  }
+  function togglePw(id) {
+    const el = document.getElementById(id);
+    el.type = el.type === 'password' ? 'text' : 'password';
+  }
+  function setProgress(pct, label) {
+    document.getElementById('progress-bar').style.display = 'block';
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('step-label').textContent = label;
+  }
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+  function slugify(str) {
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  }
+
+  /* ── SETUP TOKEN ── */
+  function saveToken() {
+    const t = document.getElementById('token-input').value.trim();
+    if (!t) { msg('setup-msg','Digite o token.','error'); return; }
+    localStorage.setItem('gh_token', t);
+    msg('setup-msg','Token salvo! Agora faça login.','success');
+    setTimeout(() => show('section-login'), 1200);
+  }
+
+  /* ── LOGIN ── */
+  function doLogin() {
+    const user = document.getElementById('login-user').value.trim().toLowerCase();
+    const pass = document.getElementById('login-pass').value.trim().toLowerCase();
+    if (!USERS[user]) { msg('login-msg','Login não encontrado.','error'); return; }
+    if (pass !== user) { msg('login-msg','Senha incorreta.','error'); return; }
+    currentUser = USERS[user];
+    currentUser.login = user;
+    sessionStorage.setItem('globus_user', JSON.stringify(currentUser));
+    showPost();
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem('globus_user');
+    currentUser = null;
+    show('section-login');
+  }
+
+  function showPost() {
+    show('section-post');
+    document.getElementById('post-team-badge').innerHTML =
+      `<span class="badge-team">🏟 ${currentUser.nome}</span>`;
+  }
+
+  /* ── PREVIEW FOTO ── */
+  function previewFoto(input) {
+    const preview = document.getElementById('foto-preview');
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = e => { preview.src = e.target.result; preview.style.display = 'block'; };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  /* ── PUBLICAR ── */
+  async function publicar() {
+    const token = localStorage.getItem('gh_token');
+    if (!token) { msg('post-msg','Token não configurado. Peça ao admin do site.','error'); return; }
+
+    const title    = document.getElementById('p-title').value.trim();
+    const subtitle = document.getElementById('p-subtitle').value.trim();
+    const label    = document.getElementById('p-label').value;
+    const date     = document.getElementById('p-date').value.trim();
+    const fotoEl   = document.getElementById('p-foto');
+
+    if (!title) { msg('post-msg','O título é obrigatório.','error'); return; }
+
+    const btn = document.getElementById('btn-publish');
+    btn.disabled = true;
+    msg('post-msg','','info');
+
+    try {
+      let imgPath = null;
+
+      /* 1. Upload da foto (se tiver) */
+      if (fotoEl.files && fotoEl.files[0]) {
+        const file     = fotoEl.files[0];
+        const ext      = file.name.split('.').pop();
+        const filename = slugify(title) + '.' + ext;
+        const b64      = await fileToBase64(file);
+        const path     = `globus/fotos/${filename}`;
+
+        setProgress(25, 'Enviando foto…');
+
+        const upRes = await fetch(API + path + '?ref=' + BRANCH, {
+          headers: { Authorization: 'token ' + token }
+        });
+        const upBody = upRes.ok ? await upRes.json() : null;
+
+        await fetch(API + path, {
+          method: 'PUT',
+          headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `foto: ${filename}`,
+            content: b64,
+            branch: BRANCH,
+            ...(upBody?.sha ? { sha: upBody.sha } : {})
+          })
+        });
+
+        imgPath = `fotos/${filename}`;
+        setProgress(55, 'Foto enviada! Atualizando notícias…');
+      } else {
+        setProgress(40, 'Atualizando notícias…');
+      }
+
+      /* 2. Ler noticias.json atual */
+      const jsonRes  = await fetch(API + 'globus/data/noticias.json?ref=' + BRANCH, {
+        headers: { Authorization: 'token ' + token }
+      });
+      const jsonData = await jsonRes.json();
+      const current  = JSON.parse(atob(jsonData.content.replace(/\n/g,'')));
+
+      /* 3. Montar nova entrada */
+      const id = currentUser.id + '-' + slugify(title).slice(0, 30) + '-' + Date.now();
+      const nova = {
+        id,
+        title,
+        subtitle: subtitle || undefined,
+        label,
+        date,
+        img: imgPath,
+        teams: [currentUser.id],
+        destaque: false
+      };
+      if (!nova.subtitle) delete nova.subtitle;
+
+      const updated = [nova, ...current];
+
+      /* 4. Commitar noticias.json */
+      setProgress(80, 'Salvando no GitHub…');
+      const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2))));
+
+      const commitRes = await fetch(API + 'globus/data/noticias.json', {
+        method: 'PUT',
+        headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: `noticia: ${title} (${currentUser.nome})`,
+          content: newContent,
+          sha: jsonData.sha,
+          branch: BRANCH
+        })
+      });
+
+      if (!commitRes.ok) {
+        const err = await commitRes.json();
+        throw new Error(err.message || 'Erro ao salvar');
+      }
+
+      setProgress(100, 'Publicado!');
+      msg('post-msg', `✅ Notícia publicada! O site atualiza em ~1 minuto.`, 'success');
+
+      /* Limpar form */
+      document.getElementById('p-title').value = '';
+      document.getElementById('p-subtitle').value = '';
+      document.getElementById('p-foto').value = '';
+      document.getElementById('foto-preview').style.display = 'none';
+
+    } catch (e) {
+      msg('post-msg', '❌ Erro: ' + e.message, 'error');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  </script>
+
+</body>
+</html>
