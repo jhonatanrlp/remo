@@ -114,7 +114,6 @@
 
     <!-- LOGIN -->
     <div id="section-login" class="admin-card">
-      <button class="logout-btn" onclick="resetToken()" title="Reconfigurar token">⚙ Token</button>
       <p class="admin-title">Globus · Admin</p>
       <p class="admin-sub">Entre com seu login e senha para publicar notícias.</p>
       <div id="login-msg"></div>
@@ -191,6 +190,7 @@
   const REPO    = 'jhonatanrlp/remo';
   const API     = 'https://api.github.com/repos/' + REPO + '/contents/';
   const BRANCH  = 'master';
+  const _T      = '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';
 
   const USERS = {
     'coutinho':       { id: 'atletico-mg',  nome: 'Atlético-MG'   },
@@ -226,16 +226,12 @@
       String(today.getMonth()+1).padStart(2,'0') + '/' +
       today.getFullYear();
 
-    const token = localStorage.getItem('gh_token');
-    const sess  = sessionStorage.getItem('globus_user');
-
+    const sess = sessionStorage.getItem('globus_user');
     if (sess) {
       currentUser = JSON.parse(sess);
       showPost();
-    } else if (token) {
-      show('section-login');
     } else {
-      show('section-setup');
+      show('section-login');
     }
   });
 
@@ -387,8 +383,7 @@
 
   /* ── PUBLICAR ── */
   async function publicar() {
-    const token = localStorage.getItem('gh_token');
-    if (!token) { msg('post-msg','Token não configurado. Peça ao admin do site.','error'); return; }
+    const token = _T;
 
     const title    = document.getElementById('p-title').value.trim();
     const subtitle = document.getElementById('p-subtitle').value.trim();
