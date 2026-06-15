@@ -148,5 +148,15 @@
     "img": "../../plata.png",
     "teams": ["remo"],
     "destaque": false
+  },
+  {
+      "id": "flu-pedro-tecnico",
+    "title": "Pedro é o novo técnico do Fluminense",
+    "subtitle": "Ex-jogador é anunciado como novo treinador do clube carioca.",
+    "label": "Contratação",
+    "date": "14/06/2026",
+    "img": "fotos/pedro novo tecnico flu.jpg",
+    "teams": ["fluminense"],
+    "destaque": false
   }
 ]
