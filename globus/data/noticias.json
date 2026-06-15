@@ -1,8 +1,8 @@
-﻿[
+[
   {
     "id": "inter-financas",
-    "title": "Internacional emite nota sobre crise e anuncia troca do cafÃ© por esperanÃ§a",
-    "subtitle": "Clube gaÃºcho revela que orÃ§amento foi feito no modo carreira do FIFA.",
+    "title": "Internacional emite nota sobre crise e anuncia troca do café por esperança",
+    "subtitle": "Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.",
     "label": "Crise Financeira",
     "date": "14/06/2026",
     "img": null,
@@ -12,7 +12,7 @@
   },
   {
     "id": "inter-pietro",
-    "title": "Pietro Quadros Ã© o novo tÃ©cnico do Internacional",
+    "title": "Pietro Quadros é o novo técnico do Internacional",
     "subtitle": "Diretoria do Colorado confirma nome do novo treinador.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
@@ -23,7 +23,7 @@
   },
   {
     "id": "flamengo-pp",
-    "title": "PP Ã© o novo tÃ©cnico do Flamengo",
+    "title": "PP é o novo técnico do Flamengo",
     "subtitle": "Rubro-Negro anuncia oficialmente o novo comandante da equipe principal.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
@@ -34,8 +34,8 @@
   },
   {
     "id": "vitoria-yzzy",
-    "title": "Yzzy assume o VitÃ³ria",
-    "subtitle": "Novo tÃ©cnico Ã© apresentado no LeÃ£o da Barra.",
+    "title": "Yzzy assume o Vitória",
+    "subtitle": "Novo técnico é apresentado no Leão da Barra.",
     "label": "Comunicado Oficial",
     "date": "14/06/2026",
     "img": "fotos/yzzy no vitoria.jpg",
@@ -46,8 +46,8 @@
   {
     "id": "inter-adeyemi",
     "title": "Adeyemi chega ao Internacional",
-    "subtitle": "Atacante alemÃ£o reforÃ§a o Colorado na janela de transferÃªncias.",
-    "label": "ContrataÃ§Ã£o",
+    "subtitle": "Atacante alemão reforça o Colorado na janela de transferências.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/adeyeme no inter.jpg",
     "file": "artigos/inter-adeyemi.html",
@@ -56,9 +56,9 @@
   },
   {
     "id": "inter-nico-gonzalez",
-    "title": "Nico GonzÃ¡lez chega ao Colorado",
-    "subtitle": "Meia espanhol reforÃ§a o Inter para a sequÃªncia da temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Nico González chega ao Colorado",
+    "subtitle": "Meia espanhol reforça o Inter para a sequência da temporada.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/nico gonzalez no inter.jpg",
     "file": "artigos/inter-nico-gonzalez.html",
@@ -67,9 +67,9 @@
   },
   {
     "id": "palmeiras-joao-victor",
-    "title": "JoÃ£o Victor assina com o VerdÃ£o",
-    "subtitle": "Defensor chega ao Palmeiras para reforÃ§ar a zaga.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "João Victor assina com o Verdão",
+    "subtitle": "Defensor chega ao Palmeiras para reforçar a zaga.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/joao_victor+palmeiras.jpg",
     "file": "artigos/palmeiras-joao-victor.html",
@@ -78,9 +78,9 @@
   },
   {
     "id": "galo-jack-elliot",
-    "title": "Jack Elliot reforÃ§a o Galo",
-    "subtitle": "Zagueiro inglÃªs â€” nÃ£o o Harvey â€” Ã© o novo defensor atleticano.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Jack Elliot reforça o Galo",
+    "subtitle": "Zagueiro inglês é o novo defensor atleticano.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/jack elliot (nao o harvey) no galo.jpg",
     "file": "artigos/galo-jack-elliot.html",
@@ -89,9 +89,9 @@
   },
   {
     "id": "galo-coutinho",
-    "title": "Coutinho Ã© o novo reforÃ§o do Galo",
-    "subtitle": "Meia brasileiro assina com o AtlÃ©tico-MG apÃ³s passagem pela Europa.",
-    "label": "ContrataÃ§Ã£o",
+    "title": "Coutinho é o novo reforço do Galo",
+    "subtitle": "Meia brasileiro assina com o Atlético-MG após passagem pela Europa.",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/coutinho_tecnico_no_vasco.jpg",
     "file": "artigos/galo-coutinho.html",
@@ -102,7 +102,7 @@
     "id": "coritiba-diallo",
     "title": "Diallo chega ao Coritiba",
     "subtitle": "Atacante assina contrato com o Coxa para a temporada.",
-    "label": "ContrataÃ§Ã£o",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/diallo no coxa.jpg",
     "file": "artigos/coritiba-diallo.html",
@@ -111,9 +111,9 @@
   },
   {
     "id": "mirassol-rafael",
-    "title": "Rafael Blackman reforÃ§a o Mirassol",
+    "title": "Rafael Blackman reforça o Mirassol",
     "subtitle": "Atacante assina com o clube paulista para a temporada 2026.",
-    "label": "ContrataÃ§Ã£o",
+    "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/rafael_blackman_no_mirrasol.jpg",
     "file": "artigos/mirassol-rafael.html",
@@ -132,37 +132,25 @@
     "destaque": false
   },
   {
-    "id": "remo-plata",
-    "title": "Bem-vindo Gonzalo Plata ao LeÃ£o Azul",
-    "subtitle": "Atacante equatoriano Ã© apresentado no Clube do Remo.",
-    "label": "ContrataÃ§Ã£o",
+    "id": "remo-jhonatanrlp",
+    "title": "Jhonatanrlp é o novo técnico do Clube do Remo",
+    "subtitle": "Diretoria do Leão anuncia oficialmente o novo treinador.",
+    "label": "Comunicado Oficial",
     "date": "14/06/2026",
-    "img": "../plata.png",
-    "file": "../plata.html",
+    "img": "fotos/jhonatan ramos no remo.jpg",
+    "file": "../jhonatanrlp.html",
     "teams": ["remo"],
     "destaque": false
   },
   {
-    "id": "remo-jhonatanrlp",
-    "title": "Jhonatanrlp Ã© o novo tÃ©cnico do Clube do Remo",
-    "subtitle": "Diretoria do LeÃ£o anuncia oficialmente o novo treinador.",
-    "label": "Comunicado Oficial",
+    "id": "remo-plata",
+    "title": "Bem-vindo Gonzalo Plata ao Leão Azul",
+    "subtitle": "Atacante equatoriano é apresentado no Clube do Remo.",
+    "label": "Contratação",
     "date": "14/06/2026",
-    "img": "../jhonatan ramos no remo.jpg",
-    "file": "../jhonatanrlp.html",
+    "img": null,
+    "file": "../plata.html",
     "teams": ["remo"],
     "destaque": false
   }
-  {
-    "id": "",
-    "title": "Jhonatanrlp Ã© o novo tÃ©cnico do Clube do Remo",
-    "subtitle": "Diretoria do LeÃ£o anuncia oficialmente o novo treinador.",
-    "label": "Comunicado Oficial",
-    "date": "14/06/2026",
-    "img": "../jhonatan ramos no remo.jpg",
-    "file": "../jhonatanrlp.html",
-    "teams": ["remo"],
-    "destaque": false
-  }
-
 ]
