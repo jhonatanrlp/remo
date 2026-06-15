@@ -1,29 +1,5 @@
 [
   {
-    "id": "remo-teste-1781565823805",
-    "title": "teste",
-    "label": "Contratação",
-    "date": "15/06/2026",
-    "img": null,
-    "teams": [
-      "remo"
-    ],
-    "destaque": false,
-    "subtitle": "teste"
-  },
-  {
-    "id": "remo-remo-contrata-van-dijk-jr-1781564804658",
-    "title": "Remo contrata Van Dijk Jr.",
-    "label": "Contratação",
-    "date": "15/06/2026",
-    "img": null,
-    "teams": [
-      "remo"
-    ],
-    "destaque": false,
-    "subtitle": "Zagueiro filho da lenda holandesa chega ao Leão Azul para a temporada. Categoria: Contratação"
-  },
-  {
     "id": "athletico-cosmf-kdb",
     "title": "CosmF responde Athletico-PR: \"Palmeiras contratou dentro das regras — e vamos explicar o que é Legend de uma vez por todas\"",
     "subtitle": "Confederação esclarece contratação do KDB e dá aula sobre o que é um jogador Legend.",
