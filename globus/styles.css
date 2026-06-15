@@ -92,8 +92,15 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
+  background: none;
+  padding: 0;
 }
-.globus-logo { height: 56px; width: auto; }
+.globus-logo { 
+  height: 75px; 
+  width: auto; 
+  background: transparent;
+  mix-blend-mode: screen;
+}
 .header-brand-text {
   font-family: Arial Black, Arial, sans-serif;
   font-size: 36px; font-weight: 900; color: #f5d000; letter-spacing: -.02em;
@@ -192,6 +199,15 @@ body {
 
 /* ── HOMEPAGE ── */
 .news-listing { max-width: 1140px; margin: 0 auto; padding: 28px 20px 80px; }
+.ad-banner {
+  position: relative; text-align: center; margin: 18px 0;
+  background: #e8e8e8; border-radius: 4px; overflow: hidden;
+}
+.ad-banner img { display: block; width: 100%; max-height: 120px; object-fit: cover; object-position: center; }
+.ad-banner__label {
+  position: absolute; top: 4px; left: 8px;
+  font-size: 9px; color: #aaa; letter-spacing: .08em; text-transform: uppercase;
+}
 .section-label {
   font-size: 11px; font-weight: 900; letter-spacing: .12em;
   text-transform: uppercase; color: #1a4a22;
