@@ -256,13 +256,12 @@
     document.getElementById('progress-fill').style.width = pct + '%';
     document.getElementById('step-label').textContent = label;
   }
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = () => reject(new Error('Falha ao ler o arquivo de imagem.'));
-      reader.readAsDataURL(file);
-    });
+  async function fileToBase64(file) {
+    const buf   = await file.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    let bin = '';
+    bytes.forEach(b => bin += String.fromCharCode(b));
+    return btoa(bin);
   }
   function slugify(str) {
     return str.toLowerCase()
