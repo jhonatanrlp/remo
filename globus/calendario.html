@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário — Globus Esportes</title>
+  <link rel="icon" href="../remo.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <main class="cal-page">
+    <h1>Calendário de Jogos</h1>
+    <p class="cal-page__sub">OSM · Liga — Primeiras 5 rodadas</p>
+
+    <div class="cal-team-select" id="team-select">
+      <button class="cal-team-btn active" data-team="all" onclick="filterCal('all', this)">Todos</button>
+    </div>
+
+    <div class="cal-grid" id="cal-grid">
+      <div class="loading">Carregando calendário…</div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-brand">Globus</span>
+    <p>© 2026 Globus Esportes</p>
+    <p>OSM · Liga</p>
+  </footer>
+
+  <script>
+  let CAL = null;
+  let activeTeam = 'all';
+
+  fetch('data/calendario.json')
+    .then(r => r.json())
+    .then(data => {
+      CAL = data;
+
+      // Botões de time
+      const select = document.getElementById('team-select');
+      Object.entries(data.times).forEach(([id, t]) => {
+        const btn = document.createElement('button');
+        btn.className = 'cal-team-btn';
+        btn.dataset.team = id;
+        btn.textContent = t.sigla;
+        btn.title = t.nome;
+        btn.onclick = () => filterCal(id, btn);
+        select.appendChild(btn);
+      });
+
+      renderCal('all');
+    });
+
+  function filterCal(teamId, btn) {
+    activeTeam = teamId;
+    document.querySelectorAll('.cal-team-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCal(teamId);
+  }
+
+  function renderCal(teamId) {
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    CAL.rodadas.forEach(rodada => {
+      const jogos = teamId === 'all'
+        ? rodada.jogos
+        : rodada.jogos.filter(j => j.casa === teamId || j.fora === teamId);
+
+      if (jogos.length === 0) return;
+
+      const block = document.createElement('div');
+      block.className = 'cal-round';
+
+      block.innerHTML = `
+        <div class="cal-round__header">
+          <span class="cal-round__num">Rodada ${rodada.numero}</span>
+          <span>— OSM · Liga</span>
+        </div>
+        ${jogos.map(j => {
+          const casaNome = CAL.times[j.casa]?.nome || j.casa;
+          const foraNome = CAL.times[j.fora]?.nome || j.fora;
+          const highlighted = j.casa === teamId || j.fora === teamId;
+          return `
+            <div class="cal-match${highlighted ? ' highlight' : ''}">
+              <span class="cal-match__team home${highlighted && j.casa === teamId ? ' cal-match__highlighted' : ''}">${casaNome}</span>
+              <span class="cal-match__vs">×</span>
+              <span class="cal-match__team away${highlighted && j.fora === teamId ? ' cal-match__highlighted' : ''}">${foraNome}</span>
+            </div>
+          `;
+        }).join('')}
+      `;
+
+      grid.appendChild(block);
+    });
+  }
+  </script>
+
+</body>
+</html>

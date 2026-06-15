@@ -1,0 +1,101 @@
+{
+  "times": {
+    "atletico-mg":   { "nome": "Atlético-MG",    "sigla": "GAL", "cor": "#000" },
+    "athletico-pr":  { "nome": "Athletico-PR",   "sigla": "CAP", "cor": "#cc0000" },
+    "bahia":         { "nome": "Bahia",           "sigla": "BAH", "cor": "#003087" },
+    "botafogo":      { "nome": "Botafogo",        "sigla": "BOT", "cor": "#000" },
+    "bragantino":    { "nome": "Bragantino",      "sigla": "RBB", "cor": "#cc0000" },
+    "chapecoense":   { "nome": "Chapecoense",     "sigla": "CHP", "cor": "#2e7d32" },
+    "corinthians":   { "nome": "Corinthians",     "sigla": "COR", "cor": "#000" },
+    "coritiba":      { "nome": "Coritiba",        "sigla": "COT", "cor": "#005c1f" },
+    "cruzeiro":      { "nome": "Cruzeiro",        "sigla": "CRU", "cor": "#003087" },
+    "flamengo":      { "nome": "Flamengo",        "sigla": "FLA", "cor": "#cc0000" },
+    "fluminense":    { "nome": "Fluminense",      "sigla": "FLU", "cor": "#8b0000" },
+    "gremio":        { "nome": "Grêmio",          "sigla": "GRE", "cor": "#003087" },
+    "inter":         { "nome": "Internacional",   "sigla": "INT", "cor": "#cc0000" },
+    "mirassol":      { "nome": "Mirassol",        "sigla": "MIR", "cor": "#f5a000" },
+    "palmeiras":     { "nome": "Palmeiras",       "sigla": "PAL", "cor": "#006b2b" },
+    "remo":          { "nome": "Remo",            "sigla": "REM", "cor": "#003580" },
+    "santos":        { "nome": "Santos",          "sigla": "SAN", "cor": "#000" },
+    "sao-paulo":     { "nome": "São Paulo",       "sigla": "SPF", "cor": "#cc0000" },
+    "vasco":         { "nome": "Vasco",           "sigla": "VAS", "cor": "#000" },
+    "vitoria":       { "nome": "Vitória",         "sigla": "VIT", "cor": "#cc0000" }
+  },
+  "rodadas": [
+    {
+      "numero": 1,
+      "jogos": [
+        { "casa": "atletico-mg",  "fora": "chapecoense" },
+        { "casa": "remo",         "fora": "santos" },
+        { "casa": "corinthians",  "fora": "coritiba" },
+        { "casa": "cruzeiro",     "fora": "palmeiras" },
+        { "casa": "bahia",        "fora": "vasco" },
+        { "casa": "vitoria",      "fora": "mirassol" },
+        { "casa": "flamengo",     "fora": "botafogo" },
+        { "casa": "fluminense",   "fora": "bragantino" },
+        { "casa": "gremio",       "fora": "sao-paulo" },
+        { "casa": "inter",        "fora": "athletico-pr" }
+      ]
+    },
+    {
+      "numero": 2,
+      "jogos": [
+        { "casa": "atletico-mg",  "fora": "gremio" },
+        { "casa": "remo",         "fora": "vitoria" },
+        { "casa": "corinthians",  "fora": "mirassol" },
+        { "casa": "coritiba",     "fora": "inter" },
+        { "casa": "cruzeiro",     "fora": "sao-paulo" },
+        { "casa": "bahia",        "fora": "bragantino" },
+        { "casa": "flamengo",     "fora": "fluminense" },
+        { "casa": "santos",       "fora": "chapecoense" },
+        { "casa": "palmeiras",    "fora": "vasco" },
+        { "casa": "botafogo",     "fora": "athletico-pr" }
+      ]
+    },
+    {
+      "numero": 3,
+      "jogos": [
+        { "casa": "atletico-mg",  "fora": "cruzeiro" },
+        { "casa": "remo",         "fora": "corinthians" },
+        { "casa": "coritiba",     "fora": "botafogo" },
+        { "casa": "bahia",        "fora": "flamengo" },
+        { "casa": "vitoria",      "fora": "santos" },
+        { "casa": "fluminense",   "fora": "athletico-pr" },
+        { "casa": "gremio",       "fora": "chapecoense" },
+        { "casa": "inter",        "fora": "mirassol" },
+        { "casa": "palmeiras",    "fora": "bragantino" },
+        { "casa": "vasco",        "fora": "sao-paulo" }
+      ]
+    },
+    {
+      "numero": 4,
+      "jogos": [
+        { "casa": "atletico-mg",  "fora": "vasco" },
+        { "casa": "remo",         "fora": "inter" },
+        { "casa": "corinthians",  "fora": "santos" },
+        { "casa": "coritiba",     "fora": "fluminense" },
+        { "casa": "cruzeiro",     "fora": "gremio" },
+        { "casa": "bahia",        "fora": "athletico-pr" },
+        { "casa": "flamengo",     "fora": "palmeiras" },
+        { "casa": "mirassol",     "fora": "botafogo" },
+        { "casa": "bragantino",   "fora": "sao-paulo" },
+        { "casa": "vitoria",      "fora": "chapecoense" }
+      ]
+    },
+    {
+      "numero": 5,
+      "jogos": [
+        { "casa": "atletico-mg",  "fora": "bragantino" },
+        { "casa": "remo",         "fora": "botafogo" },
+        { "casa": "corinthians",  "fora": "vitoria" },
+        { "casa": "coritiba",     "fora": "bahia" },
+        { "casa": "cruzeiro",     "fora": "chapecoense" },
+        { "casa": "flamengo",     "fora": "sao-paulo" },
+        { "casa": "fluminense",   "fora": "mirassol" },
+        { "casa": "gremio",       "fora": "vasco" },
+        { "casa": "inter",        "fora": "santos" },
+        { "casa": "palmeiras",    "fora": "athletico-pr" }
+      ]
+    }
+  ]
+}
