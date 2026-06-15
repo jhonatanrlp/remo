@@ -216,6 +216,7 @@
 
   /* ── ESTADO ── */
   let currentUser = null;
+  let _cachedFile = null; /* base64 da foto lida imediatamente ao selecionar */
 
   /* ── INIT ── */
   window.addEventListener('DOMContentLoaded', () => {
@@ -321,13 +322,16 @@
       `<span class="badge-team">🏟 ${currentUser.nome}</span>`;
   }
 
-  /* ── PREVIEW FOTO ── */
-  function previewFoto(input) {
+  /* ── PREVIEW FOTO — lê imediatamente para evitar perda de permissão no Android ── */
+  async function previewFoto(input) {
     const preview = document.getElementById('foto-preview');
+    _cachedFile = null;
     if (input.files && input.files[0]) {
-      const reader = new FileReader();
-      reader.onload = e => { preview.src = e.target.result; preview.style.display = 'block'; };
-      reader.readAsDataURL(input.files[0]);
+      const file = input.files[0];
+      _cachedFile = { b64: await fileToBase64(file), ext: file.name.split('.').pop().toLowerCase() };
+      const dataUrl = 'data:image/' + _cachedFile.ext + ';base64,' + _cachedFile.b64;
+      preview.src = dataUrl;
+      preview.style.display = 'block';
     }
   }
 
@@ -402,12 +406,11 @@
     try {
       let imgPath = null;
 
-      /* 1. Upload da foto (se tiver) */
-      if (fotoEl.files && fotoEl.files[0]) {
-        const file     = fotoEl.files[0];
-        const ext      = file.name.split('.').pop().toLowerCase();
+      /* 1. Upload da foto (se tiver) — usa cache lido no momento da seleção */
+      if (_cachedFile) {
+        const ext      = _cachedFile.ext;
         const filename = slugify(title) + '-' + Date.now() + '.' + ext;
-        const b64      = await fileToBase64(file);
+        const b64      = _cachedFile.b64;
         const path     = `globus/fotos/${filename}`;
 
         setProgress(20, 'Enviando foto…');
