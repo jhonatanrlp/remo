@@ -5,7 +5,7 @@
     "subtitle": "Clube gaúcho revela que orçamento foi feito no modo carreira do FIFA.",
     "label": "Crise Financeira",
     "date": "14/06/2026",
-    "img": null,
+    "img": "fotos/inter nota.jpg",
     "teams": ["inter"],
     "destaque": true
   },
@@ -106,6 +106,16 @@
     "label": "Contratação",
     "date": "14/06/2026",
     "img": "fotos/rafael_blackman_no_mirrasol.jpg",
+    "teams": ["mirassol"],
+    "destaque": false
+  },
+  {
+    "id": "mirassol-james-bree",
+    "title": "James Bree é o novo reforço do Mirassol",
+    "subtitle": "Lateral-direito inglês chega ao clube paulista para a temporada.",
+    "label": "Contratação",
+    "date": "14/06/2026",
+    "img": "fotos/james bree mirassol.jpg",
     "teams": ["mirassol"],
     "destaque": false
   },
