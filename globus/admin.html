@@ -190,7 +190,6 @@
   const REPO    = 'jhonatanrlp/remo';
   const API     = 'https://api.github.com/repos/' + REPO + '/contents/';
   const BRANCH  = 'master';
-  const _T      = atob('Z2l0aHViX3BhdF8xMUFSQlA0VkkwM1g0enE3RjRxdFlGX1ltNGRLdzdTMU01ZVJreGlUa0JZTElad2lQWGlHeEVNaUdYWFB2UEtjeGFDVFFXT1pHVWhWV25KMzR2');
 
   const USERS = {
     'coutinho':       { id: 'atletico-mg',  nome: 'Atlético-MG'   },
@@ -226,12 +225,15 @@
       String(today.getMonth()+1).padStart(2,'0') + '/' +
       today.getFullYear();
 
-    const sess = sessionStorage.getItem('globus_user');
+    const token = localStorage.getItem('gh_token');
+    const sess  = sessionStorage.getItem('globus_user');
     if (sess) {
       currentUser = JSON.parse(sess);
       showPost();
-    } else {
+    } else if (token) {
       show('section-login');
+    } else {
+      show('section-setup');
     }
   });
 
@@ -383,7 +385,8 @@
 
   /* ── PUBLICAR ── */
   async function publicar() {
-    const token = _T;
+    const token = localStorage.getItem('gh_token');
+    if (!token) { msg('post-msg','Token não configurado. Peça ao admin do site.','error'); return; }
 
     const title    = document.getElementById('p-title').value.trim();
     const subtitle = document.getElementById('p-subtitle').value.trim();
