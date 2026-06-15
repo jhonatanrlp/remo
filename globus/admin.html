@@ -114,6 +114,7 @@
 
     <!-- LOGIN -->
     <div id="section-login" class="admin-card">
+      <button class="logout-btn" onclick="resetToken()" title="Reconfigurar token">⚙ Token</button>
       <p class="admin-title">Globus · Admin</p>
       <p class="admin-sub">Entre com seu login e senha para publicar notícias.</p>
       <div id="login-msg"></div>
@@ -282,6 +283,12 @@
     const bytes = new Uint8Array(bin.length);
     for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
     return new TextDecoder().decode(bytes);
+  }
+
+  /* ── RESET TOKEN ── */
+  function resetToken() {
+    localStorage.removeItem('gh_token');
+    show('section-setup');
   }
 
   /* ── SETUP TOKEN ── */
