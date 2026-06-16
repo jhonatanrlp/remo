@@ -1,5 +1,17 @@
 [
   {
+    "id": "flamengo-michael-olise-e-do-flamengo-1781618574703",
+    "title": "Michael Olise é do Flamengo!",
+    "label": "Contratação",
+    "date": "16/06/2026",
+    "img": "fotos/michael-olise-e-do-flamengo-1781618564084.png",
+    "teams": [
+      "flamengo"
+    ],
+    "destaque": false,
+    "subtitle": "O ponta direita chega ainda hoje para se apresentar ao clube"
+  },
+  {
     "id": "chapecoense-alisson-assina-com-a-chapeco-1781615203206",
     "title": "Alisson assina com a Chapecoense",
     "label": "Contratação",
