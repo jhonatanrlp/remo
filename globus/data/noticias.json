@@ -1,5 +1,17 @@
 [
   {
+    "id": "flamengo-coletiva-estrelada-1781715381513",
+    "title": "Coletiva Estrelada",
+    "label": "Futebol",
+    "date": "16/06/2026",
+    "img": "fotos/coletiva-estrelada-1781715376196.png",
+    "teams": [
+      "flamengo"
+    ],
+    "destaque": false,
+    "subtitle": "Flamengo apresenta suas principais contratações hoje"
+  },
+  {
     "id": "inter-oficial-ekitike-e-do-interna-1781675844456",
     "title": "OFICIAL EKITIKE É DO INTERNACIONAL!",
     "label": "Contratação",
