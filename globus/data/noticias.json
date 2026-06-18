@@ -1,5 +1,16 @@
 [
   {
+    "id": "vasco-nota-oficial-vasco-da-gama-1781749350640",
+    "title": "Nota oficial Vasco da gama",
+    "label": "Comunicado Oficial",
+    "date": "17/06/2026",
+    "img": "fotos/nota-oficial-vasco-da-gama-1781749347363.png",
+    "teams": [
+      "vasco"
+    ],
+    "destaque": false
+  },
+  {
     "id": "vitoria-fim-de-jogo-barradao-esporte-1781749213303",
     "title": "🔴⚫ FIM DE JOGO | BARRADÃO  🏟️ Esporte Clube Vitória 1 x 1 Mirassol",
     "label": "Futebol",
