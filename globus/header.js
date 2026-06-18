@@ -70,10 +70,13 @@ fetch(GLOBUS_BASE + 'data/calendario.json')
       const fora = data.times[j.fora]?.nome || j.fora;
       const slot = document.createElement('div');
       slot.className = 'ticker-slot';
+      const placar = j.gols_casa != null
+        ? `<span class="sep">${j.gols_casa}–${j.gols_fora}</span>`
+        : `<span class="sep">×</span>`;
       slot.innerHTML = `
         <span class="ticker-slot__time">Rod. ${rodada.numero}</span>
         <div class="ticker-slot__match">
-          <span>${casa}</span><span class="sep">×</span><span>${fora}</span>
+          <span>${casa}</span>${placar}<span>${fora}</span>
         </div>
         <span class="ticker-slot__comp">OSM · Liga</span>
       `;
