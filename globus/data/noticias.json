@@ -1,5 +1,17 @@
 [
   {
+    "id": "chapecoense-chapecoense-coloca-suarez-a--1781747833700",
+    "title": "Chapecoense coloca Suárez à venda e instaura procedimento interno de apuração.",
+    "label": "Comunicado Oficial",
+    "date": "17/06/2026",
+    "img": "fotos/chapecoense-coloca-suarez-a-venda-e-instaura-procedimento-interno-de-apuracao-1781747831377.jpg",
+    "teams": [
+      "chapecoense"
+    ],
+    "destaque": false,
+    "subtitle": "Uruguaio enfrenta acusações de envolvimento com esquemas de manipulação de resultados."
+  },
+  {
     "id": "cpi-coxa",
     "title": "CPI Pay to Win: Coritiba e Grêmio são investigados por uso ilegal de Pacotes de Jogador",
     "subtitle": "Dois clubes, o mesmo crime. CosmF expande investigação e batiza caso como CPI Pay to Win.",
@@ -7,7 +19,9 @@
     "date": "17/06/2026",
     "img": "fotos/cpi-coxa.png",
     "file": "artigos/cpi-coxa.html",
-    "teams": ["coritiba"],
+    "teams": [
+      "coritiba"
+    ],
     "destaque": true
   },
   {
@@ -27,7 +41,9 @@
     "label": "Futebol",
     "date": "16/06/2026",
     "img": "fotos/coletiva-estrelada-1781715376196.png",
-    "teams": ["flamengo"],
+    "teams": [
+      "flamengo"
+    ],
     "destaque": false,
     "subtitle": "Flamengo apresenta suas principais contratações hoje"
   },
