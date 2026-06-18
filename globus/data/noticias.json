@@ -1,5 +1,16 @@
 [
   {
+    "id": "cpi-coxa",
+    "title": "CPI do Coxa: Coritiba é investigado por compra suspeita de jogadores via Pacotes",
+    "subtitle": "Neuer, Schlotterbeck e Klostermann chegaram ao Alviverde por meio proibido na Liga OSM.",
+    "label": "Disciplinar · CosmF",
+    "date": "17/06/2026",
+    "img": "fotos/cpi-coxa.jpg",
+    "file": "artigos/cpi-coxa.html",
+    "teams": ["coritiba"],
+    "destaque": true
+  },
+  {
     "id": "rodada-1",
     "title": "Vasco humilha, Fla goleia e Bragantino surpreende: tudo da 1ª Rodada da Liga OSM",
     "subtitle": "Seis vitórias, quatro empates e o maior placar da rodada: 6-0 do Vasco no Bahia.",
