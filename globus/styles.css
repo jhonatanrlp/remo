@@ -451,6 +451,8 @@ body {
 .side-card--link { cursor: pointer; }
 
 /* Artigos em destaque */
+/* Container principal das seções — não deve ser grid */
+#news-grid { display: block; }
 .news-section { margin-top: 28px; }
 .section-label--article { color: #1a4a22; border-color: #f5d000; }
 .news-grid--articles { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
