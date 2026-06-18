@@ -1,13 +1,22 @@
 [
   {
+    "id": "rodada-1",
+    "title": "Vasco humilha, Fla goleia e Bragantino surpreende: tudo da 1ª Rodada da Liga OSM",
+    "subtitle": "Seis vitórias, quatro empates e o maior placar da rodada: 6-0 do Vasco no Bahia.",
+    "label": "Rodada 1",
+    "date": "17/06/2026",
+    "img": null,
+    "file": "artigos/rodada-1.html",
+    "teams": [],
+    "destaque": true
+  },
+  {
     "id": "flamengo-coletiva-estrelada-1781715381513",
     "title": "Coletiva Estrelada",
     "label": "Futebol",
     "date": "16/06/2026",
     "img": "fotos/coletiva-estrelada-1781715376196.png",
-    "teams": [
-      "flamengo"
-    ],
+    "teams": ["flamengo"],
     "destaque": false,
     "subtitle": "Flamengo apresenta suas principais contratações hoje"
   },

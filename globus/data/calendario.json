@@ -25,16 +25,16 @@
     {
       "numero": 1,
       "jogos": [
-        { "casa": "atletico-mg",  "fora": "chapecoense" },
-        { "casa": "remo",         "fora": "santos" },
-        { "casa": "corinthians",  "fora": "coritiba" },
-        { "casa": "cruzeiro",     "fora": "palmeiras" },
-        { "casa": "bahia",        "fora": "vasco" },
-        { "casa": "vitoria",      "fora": "mirassol" },
-        { "casa": "flamengo",     "fora": "botafogo" },
-        { "casa": "fluminense",   "fora": "bragantino" },
-        { "casa": "gremio",       "fora": "sao-paulo" },
-        { "casa": "inter",        "fora": "athletico-pr" }
+        { "casa": "atletico-mg",  "fora": "chapecoense",  "gols_casa": 0, "gols_fora": 0 },
+        { "casa": "remo",         "fora": "santos",       "gols_casa": 1, "gols_fora": 1 },
+        { "casa": "corinthians",  "fora": "coritiba",     "gols_casa": 1, "gols_fora": 1 },
+        { "casa": "cruzeiro",     "fora": "palmeiras",    "gols_casa": 2, "gols_fora": 3 },
+        { "casa": "bahia",        "fora": "vasco",        "gols_casa": 0, "gols_fora": 6 },
+        { "casa": "vitoria",      "fora": "mirassol",     "gols_casa": 1, "gols_fora": 1 },
+        { "casa": "flamengo",     "fora": "botafogo",     "gols_casa": 4, "gols_fora": 1 },
+        { "casa": "fluminense",   "fora": "bragantino",   "gols_casa": 2, "gols_fora": 4 },
+        { "casa": "gremio",       "fora": "sao-paulo",    "gols_casa": 1, "gols_fora": 0 },
+        { "casa": "inter",        "fora": "athletico-pr", "gols_casa": 2, "gols_fora": 1 }
       ]
     },
     {

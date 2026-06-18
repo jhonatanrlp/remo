@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabela da Liga — Globus Esportes</title>
+  <link rel="icon" href="logo_globus.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .tabela-page { max-width: 860px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .tabela-page h1 { font-size: 1.6rem; font-weight: 800; color: var(--color-primary); margin-bottom: .25rem; }
+    .tabela-page .subtitle { color: #666; font-size: .9rem; margin-bottom: 1.5rem; }
+
+    .standings-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .standings-table thead tr { background: var(--color-primary); color: #fff; }
+    .standings-table thead th { padding: .55rem .5rem; text-align: center; font-weight: 700; font-size: .78rem; letter-spacing: .03em; }
+    .standings-table thead th.th-team { text-align: left; padding-left: .75rem; }
+    .standings-table tbody tr { border-bottom: 1px solid #e8e8e8; transition: background .15s; }
+    .standings-table tbody tr:hover { background: #f5f8ff; }
+    .standings-table tbody tr.tr-highlight { background: #fffbe6; }
+    .standings-table tbody tr.tr-highlight:hover { background: #fff3c0; }
+    .standings-table td { padding: .5rem .5rem; text-align: center; }
+    .standings-table td.td-team { text-align: left; padding-left: .5rem; }
+
+    .pos-badge { display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 50%; font-weight: 800; font-size: .8rem; }
+    .pos-g { background: #f5d000; color: #1a3a00; }
+    .pos-r { background: #cc0000; color: #fff; }
+    .pos-n { color: #555; font-weight: 700; }
+
+    .team-cell { display: flex; align-items: center; gap: .5rem; }
+    .team-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .team-name { font-weight: 600; }
+    .team-coach { font-size: .75rem; color: #888; }
+
+    .pts-col { font-weight: 800; font-size: 1rem; color: var(--color-primary); }
+
+    .form-dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%;
+      font-size: .65rem; font-weight: 800; color: #fff; line-height: 16px; text-align: center; margin: 0 1px; }
+    .form-v { background: #2e7d32; }
+    .form-e { background: #f59e0b; }
+    .form-d { background: #cc0000; }
+
+    .legend { display: flex; gap: 1.5rem; margin-top: 1rem; font-size: .78rem; color: #555; flex-wrap: wrap; }
+    .legend span { display: flex; align-items: center; gap: .35rem; }
+
+    @media (max-width: 600px) {
+      .standings-table { font-size: .78rem; }
+      .col-hide { display: none; }
+      .team-coach { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <div class="tabela-page">
+    <h1>Tabela da Liga OSM</h1>
+    <p class="subtitle" id="tabela-subtitle">Carregando…</p>
+
+    <div id="tabela-container"></div>
+
+    <div class="legend">
+      <span><span class="pos-badge pos-g" style="width:14px;height:14px;font-size:.6rem">G</span> Zona de título</span>
+      <span><span class="pos-badge pos-r" style="width:14px;height:14px;font-size:.6rem">R</span> Rebaixamento</span>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <img src="logo_globus.png" alt="Globus" style="height:28px;opacity:.7" onerror="this.style.display='none'" />
+    <p>© 2026 Globus Esportes. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const GLOBUS_BASE = (document.currentScript?.src || '').replace(/[^/]*$/, '');
+
+    const COACHES = {
+      'atletico-mg':  'coutinhocoach',
+      'athletico-pr': 'Ribas77',
+      'bahia':        'Jurandir',
+      'botafogo':     'wanderson_399',
+      'bragantino':   'Leonardo_2238',
+      'chapecoense':  'marttinn',
+      'corinthians':  'says_4',
+      'coritiba':     'Zaquieu',
+      'cruzeiro':     'lemoszin',
+      'flamengo':     'PpMoeadas69',
+      'fluminense':   'Pedro Gomes da Fifa 5556',
+      'gremio':       'medina_829',
+      'inter':        'pietro_quadros',
+      'mirassol':     'RBlackman',
+      'palmeiras':    'João Victor',
+      'remo':         'jhonrlp',
+      'santos':       'wanderson157_1',
+      'sao-paulo':    'enzin sacanage',
+      'vasco':        'kadu_843',
+      'vitoria':      'yzzybfr47',
+    };
+
+    fetch('data/calendario.json')
+      .then(r => r.json())
+      .then(data => {
+        const times = data.times;
+        const stats = {};
+        Object.keys(times).forEach(id => {
+          stats[id] = { j:0, v:0, e:0, d:0, gp:0, gc:0, pts:0, form:[] };
+        });
+
+        let rodadasJogadas = 0;
+        data.rodadas.forEach(rodada => {
+          let rodadaCompleta = rodada.jogos.every(j => j.gols_casa != null);
+          if (rodadaCompleta) rodadasJogadas = rodada.numero;
+
+          rodada.jogos.forEach(j => {
+            if (j.gols_casa == null) return;
+            const c = stats[j.casa], f = stats[j.fora];
+            c.j++; f.j++;
+            c.gp += j.gols_casa; c.gc += j.gols_fora;
+            f.gp += j.gols_fora; f.gc += j.gols_casa;
+            if (j.gols_casa > j.gols_fora) {
+              c.v++; c.pts += 3; c.form.push('V');
+              f.d++; f.form.push('D');
+            } else if (j.gols_casa < j.gols_fora) {
+              f.v++; f.pts += 3; f.form.push('V');
+              c.d++; c.form.push('D');
+            } else {
+              c.e++; c.pts++; c.form.push('E');
+              f.e++; f.pts++; f.form.push('E');
+            }
+          });
+        });
+
+        const tabela = Object.keys(stats).map(id => ({
+          id, ...stats[id], ...times[id], saldo: stats[id].gp - stats[id].gc
+        }));
+        tabela.sort((a,b) => b.pts - a.pts || b.saldo - a.saldo || b.gp - a.gp || a.nome.localeCompare(b.nome));
+
+        const subtitle = document.getElementById('tabela-subtitle');
+        subtitle.textContent = rodadasJogadas
+          ? `Após a ${rodadasJogadas}ª rodada · OSM Liga · Temporada 2026`
+          : 'Temporada ainda não iniciada · OSM Liga 2026';
+
+        const container = document.getElementById('tabela-container');
+        let html = `
+          <table class="standings-table">
+            <thead>
+              <tr>
+                <th style="width:36px">#</th>
+                <th class="th-team">Time</th>
+                <th title="Jogos">JGD</th>
+                <th title="Vitórias">V</th>
+                <th title="Empates" class="col-hide">E</th>
+                <th title="Derrotas" class="col-hide">D</th>
+                <th title="Gols Pró">GP</th>
+                <th title="Gols Contra" class="col-hide">GC</th>
+                <th title="Saldo de Gols">SG</th>
+                <th title="Pontos">PTS</th>
+                <th title="Últimos jogos" class="col-hide">FORMA</th>
+              </tr>
+            </thead>
+            <tbody>`;
+
+        tabela.forEach((t, i) => {
+          const pos = i + 1;
+          const isMe = t.id === 'remo';
+          const isTop = pos <= 4;
+          const isRel = pos >= 18;
+
+          let badgeHtml;
+          if (isTop) badgeHtml = `<span class="pos-badge pos-g">${pos}</span>`;
+          else if (isRel) badgeHtml = `<span class="pos-badge pos-r">${pos}</span>`;
+          else badgeHtml = `<span class="pos-n">${pos}</span>`;
+
+          const formHtml = t.form.slice(-5).map(r =>
+            `<span class="form-dot form-${r.toLowerCase()}">${r}</span>`
+          ).join('');
+
+          html += `
+            <tr class="${isMe ? 'tr-highlight' : ''}">
+              <td>${badgeHtml}</td>
+              <td class="td-team">
+                <div class="team-cell">
+                  <span class="team-dot" style="background:${t.cor}"></span>
+                  <div>
+                    <div class="team-name">${t.nome}</div>
+                    <div class="team-coach">${COACHES[t.id] || ''}</div>
+                  </div>
+                </div>
+              </td>
+              <td>${t.j}</td>
+              <td>${t.v}</td>
+              <td class="col-hide">${t.e}</td>
+              <td class="col-hide">${t.d}</td>
+              <td>${t.gp}</td>
+              <td class="col-hide">${t.gc}</td>
+              <td>${t.saldo > 0 ? '+' : ''}${t.saldo}</td>
+              <td class="pts-col">${t.pts}</td>
+              <td class="col-hide">${formHtml || '—'}</td>
+            </tr>`;
+        });
+
+        html += `</tbody></table>`;
+        container.innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('tabela-container').innerHTML = '<p style="color:#888">Erro ao carregar a tabela.</p>';
+      });
+  </script>
+
+</body>
+</html>
