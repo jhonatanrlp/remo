@@ -130,6 +130,7 @@
         </div>
       </div>
       <button class="btn-primary" onclick="doLogin()">Entrar</button>
+      <button class="logout-btn" style="margin-top:16px;display:block;width:100%;text-align:center" onclick="trocarToken()">🔑 Trocar token de acesso</button>
     </div>
 
     <!-- POSTAR NOTÍCIA -->
@@ -313,6 +314,13 @@
     sessionStorage.removeItem('globus_user');
     currentUser = null;
     show('section-login');
+  }
+
+  function trocarToken() {
+    localStorage.removeItem('gh_token');
+    sessionStorage.removeItem('globus_user');
+    currentUser = null;
+    show('section-setup');
   }
 
   function showPost() {
