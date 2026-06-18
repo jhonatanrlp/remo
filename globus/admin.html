@@ -168,6 +168,10 @@
         <input type="file" id="p-foto" accept="image/*" onchange="previewFoto(this)" />
         <img id="foto-preview" class="file-preview" alt="Preview" />
       </div>
+      <div class="form-group">
+        <label>Texto da notícia <span style="font-weight:400;color:#aaa">(opcional — abre popup ao clicar no card)</span></label>
+        <textarea id="p-body" rows="6" placeholder="Escreva os parágrafos aqui. Deixe uma linha em branco para separar parágrafos.&#10;&#10;Se deixar vazio, o card não será clicável."></textarea>
+      </div>
 
       <hr class="divider" />
 
@@ -447,9 +451,11 @@
       }
 
       /* 2. Montar entrada */
+      const body = document.getElementById('p-body').value.trim();
       const id = currentUser.id + '-' + slugify(title).slice(0, 28) + '-' + Date.now();
       const nova = { id, title, label, date, img: imgPath, teams: [currentUser.id], destaque: false };
       if (subtitle) nova.subtitle = subtitle;
+      if (body) nova.body = body;
 
       /* 3. Commitar JSON com retry automático */
       await commitJson(nova, imgPath, token);
@@ -460,6 +466,7 @@
       _cachedFile = null;
       document.getElementById('p-title').value = '';
       document.getElementById('p-subtitle').value = '';
+      document.getElementById('p-body').value = '';
       document.getElementById('p-foto').value = '';
       document.getElementById('foto-preview').style.display = 'none';
 

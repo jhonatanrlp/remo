@@ -24,6 +24,14 @@
     <div class="news-grid" id="news-grid"><div class="loading">Carregando notícias…</div></div>
   </main>
 
+  <!-- Modal de notícia -->
+  <div id="news-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('news-modal').classList.remove('modal-open')">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
   <footer>
     <span class="footer-brand">Globus</span>
     <p>© 2026 Globus Esportes</p>
@@ -31,6 +39,31 @@
   </footer>
 
   <script>
+  function openModal(n) {
+    const paras = (n.body || '').split(/\n\n+/).map(p => `<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
+    document.getElementById('modal-content').innerHTML = `
+      <span class="modal-label">${n.label}</span>
+      <h2 class="modal-title">${n.title}</h2>
+      <div class="modal-meta">${n.date}</div>
+      ${n.img ? `<img class="modal-img" src="${n.img}" alt="" onerror="this.style.display='none'">` : ''}
+      <div class="modal-body">${paras}</div>
+    `;
+    document.getElementById('news-modal').classList.add('modal-open');
+    document.getElementById('news-modal').scrollTop = 0;
+  }
+  function closeModal(e) {
+    if (e.target === document.getElementById('news-modal'))
+      document.getElementById('news-modal').classList.remove('modal-open');
+  }
+
+  function cardTag(n) { return n.file ? 'a' : 'div'; }
+  function cardAttrs(n) {
+    if (n.file) return `href="${n.file}"`;
+    if (n.body) return `role="button" tabindex="0" onclick="openModal(${JSON.stringify(n).replace(/"/g,'&quot;')})"`;
+    return '';
+  }
+  function isClickable(n) { return !!(n.file || n.body); }
+
   fetch('data/noticias.json')
     .then(r => r.json())
     .then(noticias => {
@@ -43,13 +76,14 @@
       const side1    = resto[0];
       const side2    = resto[1];
 
-      const heroTag  = destaque.file ? 'a' : 'div';
-      const side1Tag = side1?.file   ? 'a' : 'div';
-      const side2Tag = side2?.file   ? 'a' : 'div';
+      const hTag = cardTag(destaque);
+      const hAttr = cardAttrs(destaque);
+      const s1Tag = side1 ? cardTag(side1) : 'div';
+      const s2Tag = side2 ? cardTag(side2) : 'div';
 
       heroArea.innerHTML = `
         <div class="hero-layout">
-          <${heroTag} class="hero-card" ${destaque.file ? `href="${destaque.file}"` : ''}>
+          <${hTag} class="hero-card${isClickable(destaque) ? ' hero-card--link' : ''}" ${hAttr}>
             ${destaque.img
               ? `<img class="hero-card__img" src="${destaque.img}" alt="" onerror="this.outerHTML='<div class=&quot;hero-card__color-bg&quot;></div>'">`
               : `<div class="hero-card__color-bg"></div>`}
@@ -57,42 +91,45 @@
               <span class="hero-card__badge">${destaque.label}</span>
               <p class="hero-card__title">${destaque.title}</p>
             </div>
-          </${heroTag}>
+          </${hTag}>
           <div class="side-stack">
             ${side1 ? `
-            <${side1Tag} class="side-card" ${side1.file ? `href="${side1.file}"` : ''}>
+            <${s1Tag} class="side-card${isClickable(side1) ? ' side-card--link' : ''}" ${cardAttrs(side1)}>
               ${side1.img
                 ? `<img class="side-card__img" src="${side1.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
-              <div class="side-card__overlay">
-                <p class="side-card__title">${side1.title}</p>
-              </div>
-            </${side1Tag}>` : ''}
+              <div class="side-card__overlay"><p class="side-card__title">${side1.title}</p></div>
+            </${s1Tag}>` : ''}
             ${side2 ? `
-            <${side2Tag} class="side-card" ${side2.file ? `href="${side2.file}"` : ''}>
+            <${s2Tag} class="side-card${isClickable(side2) ? ' side-card--link' : ''}" ${cardAttrs(side2)}>
               ${side2.img
                 ? `<img class="side-card__img" src="${side2.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
-              <div class="side-card__overlay">
-                <p class="side-card__title">${side2.title}</p>
-              </div>
-            </${side2Tag}>` : ''}
+              <div class="side-card__overlay"><p class="side-card__title">${side2.title}</p></div>
+            </${s2Tag}>` : ''}
           </div>
         </div>
       `;
 
       resto.slice(2).forEach(n => {
-        const tag = n.file ? 'a' : 'div';
+        const tag = cardTag(n);
         const card = document.createElement(tag);
-        card.className = 'news-card' + (n.file ? ' news-card--link' : '');
+        const clickable = isClickable(n);
+        card.className = 'news-card' + (clickable ? ' news-card--link' : '');
         if (n.file) card.href = n.file;
+        if (n.body) {
+          card.setAttribute('role','button');
+          card.setAttribute('tabindex','0');
+          card.onclick = () => openModal(n);
+        }
         card.innerHTML = `
           ${n.img
-            ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;>FOTO</div>'">`
-            : `<div class="news-card__thumb-placeholder">FOTO</div>`}
+            ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;></div>'">`
+            : `<div class="news-card__thumb-placeholder"></div>`}
           <div class="news-card__body">
             <span class="news-card__label">${n.label}</span>
             <span class="news-card__title">${n.title}</span>
+            ${n.body ? '<span class="news-card__read">Leia mais →</span>' : ''}
             <span class="news-card__date">${n.date}</span>
           </div>
         `;
