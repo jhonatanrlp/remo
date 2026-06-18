@@ -24,12 +24,18 @@
     <div class="news-grid" id="news-grid"><div class="loading">Carregando notícias…</div></div>
   </main>
 
-  <!-- Modal de notícia -->
-  <div id="news-modal" class="modal-overlay" onclick="closeModal(event)">
+  <!-- Modal de texto -->
+  <div id="news-modal" class="modal-overlay" onclick="closeModal(event,'news-modal')">
     <div class="modal-box">
       <button class="modal-close" onclick="document.getElementById('news-modal').classList.remove('modal-open')">✕</button>
       <div id="modal-content"></div>
     </div>
+  </div>
+
+  <!-- Lightbox de foto -->
+  <div id="photo-modal" class="modal-overlay photo-modal-overlay" onclick="closeModal(event,'photo-modal')">
+    <button class="modal-close photo-modal-close" onclick="document.getElementById('photo-modal').classList.remove('modal-open')">✕</button>
+    <img id="photo-modal-img" class="photo-modal-img" alt="" />
   </div>
 
   <footer>
@@ -48,21 +54,45 @@
       ${n.img ? `<img class="modal-img" src="${n.img}" alt="" onerror="this.style.display='none'">` : ''}
       <div class="modal-body">${paras}</div>
     `;
-    document.getElementById('news-modal').classList.add('modal-open');
-    document.getElementById('news-modal').scrollTop = 0;
+    const m = document.getElementById('news-modal');
+    m.classList.add('modal-open');
+    m.scrollTop = 0;
   }
-  function closeModal(e) {
-    if (e.target === document.getElementById('news-modal'))
+  function openPhoto(src) {
+    document.getElementById('photo-modal-img').src = src;
+    document.getElementById('photo-modal').classList.add('modal-open');
+  }
+  function closeModal(e, id) {
+    if (e.target === document.getElementById(id))
+      document.getElementById(id).classList.remove('modal-open');
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
       document.getElementById('news-modal').classList.remove('modal-open');
-  }
+      document.getElementById('photo-modal').classList.remove('modal-open');
+    }
+  });
 
   function cardTag(n) { return n.file ? 'a' : 'div'; }
-  function cardAttrs(n) {
-    if (n.file) return `href="${n.file}"`;
-    if (n.body) return `role="button" tabindex="0" onclick="openModal(${JSON.stringify(n).replace(/"/g,'&quot;')})"`;
-    return '';
+  function isClickable(n) { return !!(n.file || n.body || n.img); }
+
+  function buildCard(n, isHero, isSide) {
+    const tag = cardTag(n);
+    const el = document.createElement(tag);
+    if (n.file) {
+      el.href = n.file;
+    } else {
+      el.setAttribute('role','button');
+      el.setAttribute('tabindex','0');
+      el.style.cursor = 'pointer';
+      if (n.body) {
+        el.onclick = () => openModal(n);
+      } else if (n.img) {
+        el.onclick = () => openPhoto(n.img);
+      }
+    }
+    return el;
   }
-  function isClickable(n) { return !!(n.file || n.body); }
 
   fetch('data/noticias.json')
     .then(r => r.json())
@@ -76,14 +106,20 @@
       const side1    = resto[0];
       const side2    = resto[1];
 
+      function heroAttrs(n) {
+        if (n.file) return `href="${n.file}"`;
+        if (n.body) return `role="button" tabindex="0" style="cursor:pointer" onclick="openModal(${JSON.stringify(n).replace(/"/g,'&quot;')})"`;
+        if (n.img)  return `role="button" tabindex="0" style="cursor:pointer" onclick="openPhoto('${n.img}')"`;
+        return '';
+      }
+
       const hTag = cardTag(destaque);
-      const hAttr = cardAttrs(destaque);
       const s1Tag = side1 ? cardTag(side1) : 'div';
       const s2Tag = side2 ? cardTag(side2) : 'div';
 
       heroArea.innerHTML = `
         <div class="hero-layout">
-          <${hTag} class="hero-card${isClickable(destaque) ? ' hero-card--link' : ''}" ${hAttr}>
+          <${hTag} class="hero-card${isClickable(destaque) ? ' hero-card--link' : ''}" ${heroAttrs(destaque)}>
             ${destaque.img
               ? `<img class="hero-card__img" src="${destaque.img}" alt="" onerror="this.outerHTML='<div class=&quot;hero-card__color-bg&quot;></div>'">`
               : `<div class="hero-card__color-bg"></div>`}
@@ -94,14 +130,14 @@
           </${hTag}>
           <div class="side-stack">
             ${side1 ? `
-            <${s1Tag} class="side-card${isClickable(side1) ? ' side-card--link' : ''}" ${cardAttrs(side1)}>
+            <${s1Tag} class="side-card${isClickable(side1) ? ' side-card--link' : ''}" ${heroAttrs(side1)}>
               ${side1.img
                 ? `<img class="side-card__img" src="${side1.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
               <div class="side-card__overlay"><p class="side-card__title">${side1.title}</p></div>
             </${s1Tag}>` : ''}
             ${side2 ? `
-            <${s2Tag} class="side-card${isClickable(side2) ? ' side-card--link' : ''}" ${cardAttrs(side2)}>
+            <${s2Tag} class="side-card${isClickable(side2) ? ' side-card--link' : ''}" ${heroAttrs(side2)}>
               ${side2.img
                 ? `<img class="side-card__img" src="${side2.img}" alt="" onerror="this.outerHTML='<div class=&quot;side-card__color-bg&quot;></div>'">`
                 : `<div class="side-card__color-bg"></div>`}
@@ -111,30 +147,65 @@
         </div>
       `;
 
-      resto.slice(2).forEach(n => {
-        const tag = cardTag(n);
-        const card = document.createElement(tag);
-        const clickable = isClickable(n);
-        card.className = 'news-card' + (clickable ? ' news-card--link' : '');
-        if (n.file) card.href = n.file;
-        if (n.body) {
-          card.setAttribute('role','button');
-          card.setAttribute('tabindex','0');
-          card.onclick = () => openModal(n);
-        }
-        card.innerHTML = `
-          ${n.img
-            ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;></div>'">`
-            : `<div class="news-card__thumb-placeholder"></div>`}
-          <div class="news-card__body">
-            <span class="news-card__label">${n.label}</span>
-            <span class="news-card__title">${n.title}</span>
-            ${n.body ? '<span class="news-card__read">Leia mais →</span>' : ''}
-            <span class="news-card__date">${n.date}</span>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
+      /* Separar artigos (file) de publicações (body/img) */
+      const artigos = resto.slice(2).filter(n => n.file);
+      const pubs    = resto.slice(2).filter(n => !n.file);
+
+      if (artigos.length) {
+        const sec = document.createElement('div');
+        sec.className = 'news-section';
+        sec.innerHTML = '<p class="section-label section-label--article">📰 Artigos & Reportagens</p>';
+        const ag = document.createElement('div');
+        ag.className = 'news-grid news-grid--articles';
+        artigos.forEach(n => {
+          const card = document.createElement('a');
+          card.className = 'news-card news-card--article news-card--link';
+          card.href = n.file;
+          card.innerHTML = `
+            ${n.img
+              ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;></div>'">`
+              : `<div class="news-card__thumb-placeholder"></div>`}
+            <div class="news-card__body">
+              <span class="news-card__artbadge">ARTIGO</span>
+              <span class="news-card__label">${n.label}</span>
+              <span class="news-card__title">${n.title}</span>
+              ${n.subtitle ? `<span class="news-card__subtitle">${n.subtitle}</span>` : ''}
+              <span class="news-card__cta">Ler artigo →</span>
+              <span class="news-card__date">${n.date}</span>
+            </div>
+          `;
+          ag.appendChild(card);
+        });
+        sec.appendChild(ag);
+        grid.appendChild(sec);
+      }
+
+      if (pubs.length) {
+        const sec = document.createElement('div');
+        sec.className = 'news-section';
+        sec.innerHTML = '<p class="section-label">Notícias</p>';
+        const pg = document.createElement('div');
+        pg.className = 'news-grid';
+        pubs.forEach(n => {
+          const card = buildCard(n);
+          const clickable = isClickable(n);
+          card.className = 'news-card' + (clickable ? ' news-card--link' : '');
+          card.innerHTML = `
+            ${n.img
+              ? `<img class="news-card__thumb" src="${n.img}" alt="" onerror="this.outerHTML='<div class=&quot;news-card__thumb-placeholder&quot;></div>'">`
+              : `<div class="news-card__thumb-placeholder"></div>`}
+            <div class="news-card__body">
+              <span class="news-card__label">${n.label}</span>
+              <span class="news-card__title">${n.title}</span>
+              ${n.body ? '<span class="news-card__read">Leia mais →</span>' : ''}
+              <span class="news-card__date">${n.date}</span>
+            </div>
+          `;
+          pg.appendChild(card);
+        });
+        sec.appendChild(pg);
+        grid.appendChild(sec);
+      }
     })
     .catch(() => {
       document.getElementById('news-grid').innerHTML = '<p style="color:#888;padding:20px">Erro ao carregar notícias.</p>';
