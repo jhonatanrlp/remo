@@ -435,17 +435,74 @@ footer p { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: .06em;
   .hero-layout { grid-template-columns: 1fr; }
   .side-stack { flex-direction: row; height: 180px; }
 }
+
+/* Tablet */
 @media (max-width: 700px) {
   .search-box span { display: none; }
+  /* esconde labels dos botões do header, mantém só ícones */
+  .times-btn label, .cal-btn label { display: none; }
+  .header-left { gap: 8px; }
+
   .news-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .recent__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .times-grid { grid-template-columns: 1fr 1fr 1fr; }
-  .article__body p { font-size: 15px; }
+
+  .article__body p { font-size: 15px; line-height: 1.7; }
+  .article__meta { flex-wrap: wrap; gap: 6px; row-gap: 4px; }
+
   .cal-team-select { gap: 6px; }
   .cal-team-btn { font-size: 10px; padding: 5px 10px; }
 }
-@media (max-width: 500px) {
-  .news-grid { grid-template-columns: 1fr; }
-  .times-grid { grid-template-columns: 1fr 1fr; }
+
+/* Mobile */
+@media (max-width: 480px) {
+  /* Header compacto */
+  .main-header { padding: 0 12px; height: 56px; }
+  .header-left { gap: 6px; }
+  .hamburger-btn { display: none; }
+  .globus-logo { height: 58px; }
+  .search-box { display: none; }
+  .login-btn { padding: 6px 12px; font-size: 12px; gap: 5px; }
+  .login-btn svg { width: 12px; height: 12px; }
+
+  /* Ticker */
+  .ticker-slot { min-width: 130px; padding: 6px 10px; }
+  .ticker-slot__match { font-size: 12px; }
+  .ticker-highlight { min-width: 72px; padding: 0 10px; font-size: 9px; }
+
+  /* Homepage */
+  .news-listing { padding: 14px 10px 60px; }
+  .news-grid { grid-template-columns: 1fr; gap: 10px; }
+  .hero-card__title { font-size: clamp(15px, 5vw, 22px); }
   .side-stack { flex-direction: column; height: auto; }
+  .side-card { min-height: 140px; }
+
+  /* Artigo */
+  .article-page { padding: 16px 14px 60px; }
+  .article__title { font-size: clamp(20px, 7vw, 32px); }
+  .article__meta { flex-wrap: wrap; gap: 5px; row-gap: 3px; font-size: 10px; }
+  .article__body p { font-size: 15px; line-height: 1.7; }
+  .article__body h2 { font-size: 15px; }
+  .article__body blockquote { padding-left: 14px; }
+  .article__body blockquote p { font-size: 15px; }
+
+  /* Calendário */
+  .cal-page { padding: 16px 10px 60px; }
+  .cal-match { padding: 10px 12px; }
+  .cal-match__team { font-size: 12px; }
+  .cal-match__vs { padding: 3px 8px; font-size: 10px; margin: 0 6px; }
+  .cal-team-select { gap: 5px; }
+  .cal-team-btn { font-size: 9px; padding: 5px 8px; }
+
+  /* Times */
+  .times-page { padding: 16px 10px 60px; }
+  .times-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .team-card { padding: 12px; }
+
+  /* Tabela */
+  .tabela-page { padding: 16px 10px 60px; }
+  .standings-table { font-size: .78rem; }
+
+  /* Footer */
+  .site-footer { padding: 16px; flex-direction: column; gap: 8px; text-align: center; }
 }
